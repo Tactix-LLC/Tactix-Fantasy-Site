@@ -24,13 +24,12 @@ import {
   Gamepad2,
 } from "lucide-react";
 
-// Custom App Store SVG Component
-const AppStoreBadge = ({ isDark }: { isDark: boolean }) => (
+const AppStoreBadge = () => (
   <svg width="135" height="40" viewBox="0 0 135 40" className="w-full h-auto">
     <defs>
       <linearGradient id="appStoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor={isDark ? "#000000" : "#1a1a1a"} />
-        <stop offset="100%" stopColor={isDark ? "#434343" : "#2d2d2d"} />
+        <stop offset="0%" stopColor="#064e3b" /> {/* emerald-900 */}
+        <stop offset="100%" stopColor="#15803d" /> {/* emerald-700 */}
       </linearGradient>
     </defs>
     <rect width="135" height="40" rx="8" fill="url(#appStoreGradient)" />
@@ -58,8 +57,7 @@ const AppStoreBadge = ({ isDark }: { isDark: boolean }) => (
   </svg>
 );
 
-// Custom Google Play SVG Component
-const GooglePlayBadge = ({ isDark }: { isDark: boolean }) => (
+const GooglePlayBadge = () => (
   <svg width="135" height="40" viewBox="0 0 135 40" className="w-full h-auto">
     <defs>
       <linearGradient
@@ -69,8 +67,8 @@ const GooglePlayBadge = ({ isDark }: { isDark: boolean }) => (
         x2="100%"
         y2="100%"
       >
-        <stop offset="0%" stopColor={isDark ? "#000000" : "#1a1a1a"} />
-        <stop offset="100%" stopColor={isDark ? "#434343" : "#2d2d2d"} />
+        <stop offset="0%" stopColor="#064e3b" /> {/* emerald-900 */}
+        <stop offset="100%" stopColor="#15803d" /> {/* emerald-700 */}
       </linearGradient>
     </defs>
     <rect width="135" height="40" rx="8" fill="url(#playStoreGradient)" />
@@ -106,13 +104,10 @@ const GooglePlayBadge = ({ isDark }: { isDark: boolean }) => (
   </svg>
 );
 
-// Football Field Background Component
 const FootballField = ({
   mousePosition,
-  isDark,
 }: {
   mousePosition: { x: number; y: number };
-  isDark: boolean;
 }) => {
   const [arrows, setArrows] = useState<
     Array<{ id: number; x: number; y: number; angle: number; delay: number }>
@@ -152,7 +147,7 @@ const FootballField = ({
           width="1000"
           height="600"
           fill="none"
-          stroke={isDark ? "#4CAF50" : "#2E7D32"}
+          stroke="#15803d" // emerald-700
           strokeWidth="2"
         />
 
@@ -162,7 +157,7 @@ const FootballField = ({
           y1="100"
           x2="600"
           y2="700"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
 
@@ -172,7 +167,7 @@ const FootballField = ({
           cy="400"
           r="80"
           fill="none"
-          stroke={isDark ? "#16a34a" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
 
@@ -183,7 +178,7 @@ const FootballField = ({
           width="150"
           height="300"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
         <rect
@@ -192,7 +187,7 @@ const FootballField = ({
           width="150"
           height="300"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
 
@@ -203,7 +198,7 @@ const FootballField = ({
           width="60"
           height="150"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
         <rect
@@ -212,7 +207,7 @@ const FootballField = ({
           width="60"
           height="150"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
 
@@ -220,25 +215,25 @@ const FootballField = ({
         <path
           d="M 100 100 Q 120 100 120 120"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
         <path
           d="M 1100 100 Q 1100 120 1080 120"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
         <path
           d="M 100 700 Q 120 700 120 680"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
         <path
           d="M 1100 700 Q 1100 680 1080 680"
           fill="none"
-          stroke={isDark ? "#22c55e" : "#16a34a"}
+          stroke="#34d399" // emerald-400
           strokeWidth="2"
         />
       </svg>
@@ -267,17 +262,17 @@ const FootballField = ({
               >
                 <stop
                   offset="0%"
-                  stopColor={isDark ? "#8b5cf6" : "#7c3aed"}
+                  stopColor="#34d399" // emerald-400
                   stopOpacity="0"
                 />
                 <stop
                   offset="50%"
-                  stopColor={isDark ? "#8b5cf6" : "#7c3aed"}
+                  stopColor="#34d399" // emerald-400
                   stopOpacity="0.8"
                 />
                 <stop
                   offset="100%"
-                  stopColor={isDark ? "#06b6d4" : "#0891b2"}
+                  stopColor="#a3e635" // lime-400
                   stopOpacity="1"
                 />
               </linearGradient>
@@ -297,10 +292,195 @@ const FootballField = ({
   );
 };
 
+const HeroSection = () => {
+  return (
+    <section className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-emerald-400 to-lime-400">
+      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
+        <div className="text-center lg:text-left">
+          <div className="inline-flex items-center space-x-2 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 border bg-black border-black/30 backdrop-blur-sm">
+            <Zap className="w-4 h-4 text-white" />
+            <span className="text-xs sm:text-sm font-medium text-white">
+              The Future of Fantasy Football
+            </span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
+            <span className="bg-black bg-clip-text text-transparent">
+              Dominate Every
+            </span>
+            <br />
+            <span className="bg-black bg-clip-text text-transparent">
+              Gameweek
+            </span>
+          </h1>
+
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-['Poppins'] text-black">
+            Experience the most advanced fantasy Premier League platform ever
+            created. Powered by AI-driven insights, real-time analytics, and
+            professional-grade tactical tools that give you the edge over
+            millions of managers worldwide.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center lg:justify-start mb-8 sm:mb-12">
+            <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
+              <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
+                <AppStoreBadge />
+              </div>
+            </div>
+            <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
+              <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
+                <GooglePlayBadge />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* iPhone Mockups */}
+        <div className="relative flex justify-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-8 sm:space-y-0 sm:space-x-4 md:space-x-8 max-w-full">
+            {/* iPhone Frame - League Table */}
+            <div
+              className="relative transform hover:scale-105 transition-all duration-500 w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px]"
+              style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+            >
+              <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full h-full bg-lime-400 rounded-[2rem] relative overflow-hidden">
+                  <div className="absolute top-2 sm:top-6 left-1/2 transform -translate-x-1/2 w-20 h-5 sm:h-6 bg-black rounded-full"></div>
+                  <div className="pt-10 sm:pt-12 p-3 sm:p-4">
+                    <div className="text-center mb-4 sm:mb-6">
+                      <h3 className="text-base sm:text-lg font-bold mb-2 font-['Space_Grotesk'] text-black">
+                        Global Ranking
+                      </h3>
+                      <div className="flex justify-center space-x-4 sm:space-x-6">
+                        <div className="text-center">
+                          <div className="text-lg sm:text-2xl font-bold text-emerald-400">
+                            1st
+                          </div>
+                          <div className="text-xs text-gray-700">Position</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-lg sm:text-2xl font-bold text-emerald-400">
+                            2,456
+                          </div>
+                          <div className="text-xs text-gray-700">Points</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-lg sm:text-2xl font-bold text-emerald-400">
+                            98%
+                          </div>
+                          <div className="text-xs text-gray-700">Top</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      {[
+                        { rank: 1, name: "You", points: 2456, change: "+3" },
+                        {
+                          rank: 2,
+                          name: "TacticalGenius",
+                          points: 2445,
+                          change: "-1",
+                        },
+                        {
+                          rank: 3,
+                          name: "PremierPro",
+                          points: 2432,
+                          change: "+1",
+                        },
+                        {
+                          rank: 4,
+                          name: "FantasyKing",
+                          points: 2428,
+                          change: "-2",
+                        },
+                        {
+                          rank: 5,
+                          name: "GoalMachine",
+                          points: 2415,
+                          change: "0",
+                        },
+                        {
+                          rank: 6,
+                          name: "MidfieldMaster",
+                          points: 2401,
+                          change: "+1",
+                        },
+                      ].map((player, i) => (
+                        <div
+                          key={i}
+                          className={`flex items-center space-x-2 sm:space-x-3 p-2 rounded-lg ${
+                            i === 0 ? "bg-emerald-400/20" : "bg-white/50"
+                          }`}
+                        >
+                          <div
+                            className={`w-5 sm:w-6 h-5 sm:h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                              i === 0
+                                ? "bg-emerald-400 text-black"
+                                : "bg-gray-300 text-gray-700"
+                            }`}
+                          >
+                            {player.rank}
+                          </div>
+                          <div className="flex-1">
+                            <div
+                              className={`font-semibold text-sm sm:text-base ${
+                                i === 0 ? "text-black" : "text-black"
+                              }`}
+                            >
+                              {player.name}
+                            </div>
+                          </div>
+                          <div
+                            className={`text-xs ${
+                              player.change.startsWith("+")
+                                ? "text-emerald-400"
+                                : player.change.startsWith("-")
+                                ? "text-red-400"
+                                : "text-gray-700"
+                            }`}
+                          >
+                            {player.change}
+                          </div>
+                          <div
+                            className={`font-bold text-sm ${
+                              i === 0 ? "text-emerald-400" : "text-black"
+                            }`}
+                          >
+                            {player.points}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* iPhone Frame - Image with Animation */}
+            <div
+              className="relative w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px] animate-flip-and-swipe"
+              style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+            >
+              <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
+                <div className="w-full h-full bg-lime-400 rounded-[2rem] relative overflow-hidden">
+                  <img
+                    src="/tactic.png"
+                    alt="App Screenshot"
+                    style={{ objectFit: "cover" }}
+                    className="rounded-[2rem]"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
-  const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -321,136 +501,67 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-  }, [isDark]);
-
   return (
-    <div
-      className={`relative min-h-screen transition-colors duration-500 ${
-        isDark
-          ? "bg-slate-900"
-          : "bg-gradient-to-r from-green-400 via-emerald-400 to-lime-400 "
-      } overflow-x-hidden`}
-    >
+    <div className="relative min-h-screen transition-colors duration-500 bg-lime-400 overflow-x-hidden">
       {/* Football Field Background */}
-      <FootballField mousePosition={mousePosition} isDark={isDark} />
+      <FootballField mousePosition={mousePosition} />
 
       {/* Dynamic Background Light Effect */}
       <div
         className="fixed inset-0 pointer-events-none z-10"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${
-            mousePosition.y
-          }px, 
-            ${
-              isDark
-                ? "rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.08) 25%, transparent 50%"
-                : "rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 25%, transparent 50%"
-            })`,
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, 
+            rgba(6, 78, 59, 0.08) 0%, rgba(6, 78, 59, 0.04) 25%, transparent 50%)`,
         }}
       />
 
       {/* Animated Background Gradients */}
       <div className="fixed inset-0 z-5">
-        <div
-          className={`absolute top-0 left-1/4 w-96 h-96 ${
-            isDark ? "bg-purple-600/20" : "bg-purple-400/10"
-          } rounded-full blur-3xl animate-pulse`}
-        ></div>
-        <div
-          className={`absolute bottom-0 right-1/4 w-96 h-96 ${
-            isDark ? "bg-blue-600/20" : "bg-blue-400/10"
-          } rounded-full blur-3xl animate-pulse delay-1000`}
-        ></div>
-        <div
-          className={`absolute top-1/2 left-1/2 w-96 h-96 ${
-            isDark ? "bg-green-600/15" : "bg-green-400/8"
-          } rounded-full blur-3xl animate-pulse delay-2000`}
-        ></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-emerald-400/8 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
       {/* Navigation */}
-      <nav
-        className={` relative z-50 flex items-center justify-between sm:justify-around px-6 py-6 backdrop-blur-md ${
-          isDark
-            ? "bg-slate-900/80 border-slate-800/50"
-            : "bg-gradient-to-r from-green-400 via-emerald-400 to-lime-400"
-        } `}
-      >
+      <nav className="relative z-50 flex items-center justify-between sm:justify-around px-6 py-6 backdrop-blur-md bg-gradient-to-r from-emerald-400 to-lime-40">
         <div className="flex items-center space-x-3">
-          <h1
-            className={`text-3xl font-bold ${
-              isDark
-                ? "bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent"
-                : "bg-black bg-clip-text text-transparent"
-            } font-['Meie_Script']`}
-          >
-            Tactix™
-          </h1>
+          <img
+            src="/Tactix_logo.svg"
+            alt="Tactix Logo"
+            className="h-14 w-auto"
+          />
         </div>
 
         <div className="hidden md:flex items-center space-x-8">
           <a
             href="#features"
-            className={`${
-              isDark
-                ? "text-slate-300 hover:text-white"
-                : "text-black hover:text-gray-900"
-            } transition-colors duration-300 font-medium`}
+            className="text-black hover:text-gray-900 transition-colors duration-300 font-medium"
           >
             Features
           </a>
           <a
             href="#how-to-play"
-            className={`${
-              isDark
-                ? "text-slate-300 hover:text-white"
-                : "text-black hover:text-gray-900"
-            } transition-colors duration-300 font-medium`}
+            className="text-black hover:text-gray-900 transition-colors duration-300 font-medium"
           >
             How to Play
           </a>
           <a
             href="#download"
-            className={`${
-              isDark
-                ? "text-slate-300 hover:text-white"
-                : "text-black hover:text-gray-900"
-            } transition-colors duration-300 font-medium`}
+            className="text-black hover:text-gray-900 transition-colors duration-300 font-medium"
           >
             Download
           </a>
           <a
             href="#contact"
-            className={`${
-              isDark
-                ? "text-slate-300 hover:text-white"
-                : "text-black hover:text-gray-900"
-            } transition-colors duration-300 font-medium`}
+            className="text-black hover:text-gray-900 transition-colors duration-300 font-medium"
           >
             Contact
           </a>
-
-          <button
-            onClick={() => setIsDark(!isDark)}
-            className={`p-2 rounded-xl ${
-              isDark
-                ? "bg-slate-800 hover:bg-slate-700"
-                : "bg-gray-200 hover:bg-gray-300"
-            } transition-all duration-300`}
-          >
-            {isDark ? (
-              <Sun className="w-5 h-5 text-yellow-400" />
-            ) : (
-              <Moon className="w-5 h-5 text-slate-600" />
-            )}
-          </button>
         </div>
 
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors"
+          className="md:hidden p-2 rounded-xl bg-black hover:bg-gray-800 transition-colors"
         >
           {isMenuOpen ? (
             <X className="w-6 h-6 text-white" />
@@ -462,127 +573,45 @@ function App() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div
-          className={`md:hidden fixed inset-x-0 top-20 z-40 ${
-            isDark ? "bg-slate-900/95" : "bg-white/95"
-          } backdrop-blur-md border-b ${
-            isDark ? "border-slate-800" : "border-gray-200"
-          } p-6`}
-        >
+        <div className="md:hidden fixed inset-x-0 top-20 z-40 bg-white/95 backdrop-blur-md border border-emerald-400/50 p-6">
           <div className="flex flex-col space-y-4">
-            <a
-              href="#features"
-              className={`${
-                isDark ? "text-slate-300" : "text-gray-600"
-              } font-medium`}
-            >
+            <a href="#features" className="text-gray-600 font-medium">
               Features
             </a>
-            <a
-              href="#how-to-play"
-              className={`${
-                isDark ? "text-slate-300" : "text-gray-600"
-              } font-medium`}
-            >
+            <a href="#how-to-play" className="text-gray-600 font-medium">
               How to Play
             </a>
-            <a
-              href="#download"
-              className={`${
-                isDark ? "text-slate-300" : "text-gray-600"
-              } font-medium`}
-            >
+            <a href="#download" className="text-gray-600 font-medium">
               Download
             </a>
-            <a
-              href="#contact"
-              className={`${
-                isDark ? "text-slate-300" : "text-gray-600"
-              } font-medium`}
-            >
+            <a href="#contact" className="text-gray-600 font-medium">
               Contact
             </a>
-            <button
-              onClick={() => setIsDark(!isDark)}
-              className={`flex items-center space-x-2 p-2 rounded-xl ${
-                isDark ? "bg-slate-800" : "bg-gray-200"
-              } w-fit`}
-            >
-              {isDark ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
-              ) : (
-                <Moon className="w-5 h-5 text-slate-600" />
-              )}
-              <span className={`${isDark ? "text-white" : "text-gray-900"}`}>
-                {isDark ? "Light Mode" : "Dark Mode"}
-              </span>
-            </button>
           </div>
         </div>
       )}
 
       {/* Hero Section */}
-      <section
-        className={`relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 ${
-          isDark ? "" : "bg-gradient-to-br from-emerald-400 to-lime-400"
-        }`}
-      >
+      <section className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-emerald-400 to-lime-400">
         <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
           <div className="text-center lg:text-left">
-            <div
-              className={`inline-flex items-center space-x-2 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 border ${
-                isDark
-                  ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/30"
-                  : "bg-black border-black/30"
-              } backdrop-blur-sm`}
-            >
-              <Zap
-                className={`w-4 h-4 ${
-                  isDark ? "text-purple-300" : "text-white"
-                }`}
-              />
-              <span
-                className={`text-xs sm:text-sm font-medium ${
-                  isDark ? "text-purple-300" : "text-white"
-                }`}
-              >
+            <div className="inline-flex items-center space-x-2 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 border bg-black border-black/30 backdrop-blur-sm">
+              <Zap className="w-4 h-4 text-white" />
+              <span className="text-xs sm:text-sm font-medium text-white">
                 The Future of Fantasy Football
               </span>
             </div>
-
-            <h1
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight font-['Space_Grotesk'] ${
-                isDark
-                  ? ""
-                  : "bg-gradient-to-r from-emerald-400 to-lime-400 bg-clip-text text-transparent"
-              }`}
-            >
-              <span
-                className={`${
-                  isDark
-                    ? "bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
-                    : "bg-black bg-clip-text text-transparent"
-                }`}
-              >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
+              <span className="bg-black bg-clip-text text-transparent">
                 Dominate Every
               </span>
               <br />
-              <span
-                className={`${
-                  isDark
-                    ? "text-white"
-                    : "bg-black bg-clip-text text-transparent"
-                }`}
-              >
+              <span className="bg-black bg-clip-text text-transparent">
                 Gameweek
               </span>
             </h1>
 
-            <p
-              className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-['Poppins'] ${
-                isDark ? "text-slate-300" : "text-black"
-              }`}
-            >
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-['Poppins'] text-black">
               Experience the most advanced fantasy Premier League platform ever
               created. Powered by AI-driven insights, real-time analytics, and
               professional-grade tactical tools that give you the edge over
@@ -591,49 +620,14 @@ function App() {
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center lg:justify-start mb-8 sm:mb-12">
               <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
-                <div
-                  className={`w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300 ${
-                    isDark
-                      ? ""
-                      : "bg-gradient-to-r from-emerald-400 to-lime-400 rounded-lg"
-                  }`}
-                >
-                  <AppStoreBadge isDark={isDark} />
+                <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
+                  <AppStoreBadge />
                 </div>
               </div>
               <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
-                <div
-                  className={`w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300 ${
-                    isDark
-                      ? ""
-                      : "bg-gradient-to-r from-emerald-400 to-lime-400 rounded-lg"
-                  }`}
-                >
-                  <GooglePlayBadge isDark={isDark} />
+                <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
+                  <GooglePlayBadge />
                 </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-8 text-xs sm:text-sm">
-              <div className="flex items-center space-x-2">
-                <div
-                  className={`w-2 h-2 rounded-full animate-pulse ${
-                    isDark ? "bg-green-400" : "bg-emerald-400"
-                  }`}
-                ></div>
-                <span className={`${isDark ? "text-slate-400" : "text-black"}`}>
-                  2000+ Active Players
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Star
-                  className={`w-4 h-4 fill-current ${
-                    isDark ? "text-yellow-400" : "text-emerald-400"
-                  }`}
-                />
-                <span className={`${isDark ? "text-slate-400" : "text-black"}`}>
-                  4.9 Rating
-                </span>
               </div>
             </div>
           </div>
@@ -641,436 +635,19 @@ function App() {
           {/* iPhone Mockups */}
           <div className="relative flex justify-center">
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-8 sm:space-y-0 sm:space-x-4 md:space-x-8 max-w-full">
-              {/* iPhone Frame 1 - Team Management */}
-              <div
-                className="relative transform hover:scale-105 transition-all duration-500 w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px]"
-                style={{ transform: `translateY(${scrollY * 0.1}px)` }}
-              >
-                <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                  <div
-                    className={`w-full h-full ${
-                      isDark ? "bg-slate-900" : "bg-lime-400"
-                    } rounded-[2rem] relative overflow-hidden`}
-                  >
-                    <div className="absolute top-2 sm:top-6 left-1/2 transform -translate-x-1/2 w-20 h-5 sm:h-6 bg-black rounded-full"></div>
-                    <div className="pt-10 sm:pt-12 p-3 sm:p-4">
-                      <div className="flex items-center justify-between mb-4 sm:mb-6">
-                        <h3
-                          className={`text-base sm:text-lg font-bold font-['Space_Grotesk'] ${
-                            isDark ? "text-white" : "text-black"
-                          }`}
-                        >
-                          My Squad
-                        </h3>
-                        <div className="flex items-center space-x-2">
-                          <div
-                            className={`w-6 sm:w-8 h-6 sm:h-8 rounded-full flex items-center justify-center ${
-                              isDark ? "bg-purple-500" : "bg-emerald-400"
-                            }`}
-                          >
-                            <span className="text-black text-xs font-bold">
-                              1
-                            </span>
-                          </div>
-                          <TrendingUp
-                            className={`w-4 sm:w-5 h-4 sm:h-5 ${
-                              isDark ? "text-green-400" : "text-emerald-400"
-                            }`}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 sm:space-y-3">
-                        {[
-                          {
-                            name: "Haaland",
-                            pos: "FWD",
-                            points: "+15",
-                            price: "14.0",
-                          },
-                          {
-                            name: "Salah",
-                            pos: "MID",
-                            points: "+12",
-                            price: "13.2",
-                          },
-                          {
-                            name: "De Bruyne",
-                            pos: "MID",
-                            points: "+8",
-                            price: "12.5",
-                          },
-                          {
-                            name: "Van Dijk",
-                            pos: "DEF",
-                            points: "+6",
-                            price: "6.5",
-                          },
-                          {
-                            name: "Alisson",
-                            pos: "GK",
-                            points: "+4",
-                            price: "5.5",
-                          },
-                        ].map((player, i) => (
-                          <div
-                            key={i}
-                            className={`flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg backdrop-blur-sm ${
-                              isDark ? "bg-slate-800/50" : "bg-white/70"
-                            }`}
-                          >
-                            <div
-                              className={`w-8 sm:w-10 h-8 sm:h-10 rounded-full flex items-center justify-center ${
-                                isDark
-                                  ? "bg-gradient-to-br from-purple-500 to-blue-500"
-                                  : "bg-gradient-to-br from-emerald-400 to-lime-400"
-                              }`}
-                            >
-                              <span className="text-black text-xs font-bold">
-                                {player.pos}
-                              </span>
-                            </div>
-                            <div className="flex-1">
-                              <div
-                                className={`font-semibold text-sm sm:text-base ${
-                                  isDark ? "text-white" : "text-black"
-                                }`}
-                              >
-                                {player.name}
-                              </div>
-                              <div
-                                className={`text-xs ${
-                                  isDark ? "text-slate-400" : "text-gray-700"
-                                }`}
-                              >
-                                £{player.price}m
-                              </div>
-                            </div>
-                            <div
-                              className={`font-bold text-sm ${
-                                isDark ? "text-green-400" : "text-emerald-400"
-                              }`}
-                            >
-                              {player.points}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div
-                        className={`mt-4 sm:mt-6 p-2 sm:p-3 rounded-lg border ${
-                          isDark
-                            ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/30"
-                            : "bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`text-xs sm:text-sm ${
-                              isDark ? "text-slate-300" : "text-black"
-                            }`}
-                          >
-                            Total Points
-                          </span>
-                          <span
-                            className={`text-lg sm:text-2xl font-bold ${
-                              isDark ? "text-purple-400" : "text-emerald-400"
-                            }`}
-                          >
-                            2,456
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* iPhone Frame 2 - League Table */}
+              {/* iPhone Frame */}
               <div
                 className="relative transform hover:scale-105 transition-all duration-500 w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px]"
                 style={{ transform: `translateY(${scrollY * -0.1}px)` }}
               >
                 <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                  <div
-                    className={`w-full h-full ${
-                      isDark ? "bg-slate-900" : "bg-lime-400"
-                    } rounded-[2rem] relative overflow-hidden`}
-                  >
-                    <div className="absolute top-2 sm:top-6 left-1/2 transform -translate-x-1/2 w-20 h-5 sm:h-6 bg-black rounded-full"></div>
-                    <div className="pt-10 sm:pt-12 p-3 sm:p-4">
-                      <div className="text-center mb-4 sm:mb-6">
-                        <h3
-                          className={`text-base sm:text-lg font-bold mb-2 font-['Space_Grotesk'] ${
-                            isDark ? "text-white" : "text-black"
-                          }`}
-                        >
-                          Global Ranking
-                        </h3>
-                        <div className="flex justify-center space-x-4 sm:space-x-6">
-                          <div className="text-center">
-                            <div
-                              className={`text-lg sm:text-2xl font-bold ${
-                                isDark ? "text-purple-400" : "text-emerald-400"
-                              }`}
-                            >
-                              1st
-                            </div>
-                            <div
-                              className={`text-xs ${
-                                isDark ? "text-slate-400" : "text-gray-700"
-                              }`}
-                            >
-                              Position
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <div
-                              className={`text-lg sm:text-2xl font-bold ${
-                                isDark ? "text-green-400" : "text-emerald-400"
-                              }`}
-                            >
-                              2,456
-                            </div>
-                            <div
-                              className={`text-xs ${
-                                isDark ? "text-slate-400" : "text-gray-700"
-                              }`}
-                            >
-                              Points
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <div
-                              className={`text-lg sm:text-2xl font-bold ${
-                                isDark ? "text-blue-400" : "text-emerald-400"
-                              }`}
-                            >
-                              98%
-                            </div>
-                            <div
-                              className={`text-xs ${
-                                isDark ? "text-slate-400" : "text-gray-700"
-                              }`}
-                            >
-                              Top
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        {[
-                          { rank: 1, name: "You", points: 2456, change: "+3" },
-                          {
-                            rank: 2,
-                            name: "TacticalGenius",
-                            points: 2445,
-                            change: "-1",
-                          },
-                          {
-                            rank: 3,
-                            name: "PremierPro",
-                            points: 2432,
-                            change: "+1",
-                          },
-                          {
-                            rank: 4,
-                            name: "FantasyKing",
-                            points: 2428,
-                            change: "-2",
-                          },
-                          {
-                            rank: 5,
-                            name: "GoalMachine",
-                            points: 2415,
-                            change: "0",
-                          },
-                          {
-                            rank: 6,
-                            name: "MidfieldMaster",
-                            points: 2401,
-                            change: "+1",
-                          },
-                        ].map((player, i) => (
-                          <div
-                            key={i}
-                            className={`flex items-center space-x-2 sm:space-x-3 p-2 rounded-lg ${
-                              i === 0
-                                ? isDark
-                                  ? "bg-purple-600/20"
-                                  : "bg-emerald-400/20"
-                                : isDark
-                                ? "bg-slate-800/30"
-                                : "bg-white/50"
-                            }`}
-                          >
-                            <div
-                              className={`w-5 sm:w-6 h-5 sm:h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                                i === 0
-                                  ? isDark
-                                    ? "bg-purple-500 text-white"
-                                    : "bg-emerald-400 text-black"
-                                  : isDark
-                                  ? "bg-slate-600 text-slate-300"
-                                  : "bg-gray-300 text-gray-700"
-                              }`}
-                            >
-                              {player.rank}
-                            </div>
-                            <div className="flex-1">
-                              <div
-                                className={`font-semibold text-sm sm:text-base ${
-                                  i === 0
-                                    ? isDark
-                                      ? "text-white"
-                                      : "text-black"
-                                    : isDark
-                                    ? "text-slate-300"
-                                    : "text-black"
-                                }`}
-                              >
-                                {player.name}
-                              </div>
-                            </div>
-                            <div
-                              className={`text-xs ${
-                                player.change.startsWith("+")
-                                  ? isDark
-                                    ? "text-green-400"
-                                    : "text-emerald-400"
-                                  : player.change.startsWith("-")
-                                  ? "text-red-400"
-                                  : isDark
-                                  ? "text-slate-400"
-                                  : "text-gray-700"
-                              }`}
-                            >
-                              {player.change}
-                            </div>
-                            <div
-                              className={`font-bold text-sm ${
-                                i === 0
-                                  ? isDark
-                                    ? "text-purple-400"
-                                    : "text-emerald-400"
-                                  : isDark
-                                  ? "text-slate-400"
-                                  : "text-black"
-                              }`}
-                            >
-                              {player.points}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* iPhone Frame 3 - Player Stats */}
-              <div
-                className="relative transform hover:scale-105 transition-all duration-500 w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px]"
-                style={{ transform: `translateY(${scrollY * 0.05}px)` }}
-              >
-                <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                  <div
-                    className={`w-full h-full ${
-                      isDark ? "bg-slate-900" : "bg-lime-400"
-                    } rounded-[2rem] relative overflow-hidden`}
-                  >
-                    <div className="absolute top-2 sm:top-6 left-1/2 transform -translate-x-1/2 w-20 h-5 sm:h-6 bg-black rounded-full"></div>
-                    <div className="pt-10 sm:pt-12 p-3 sm:p-4">
-                      <div className="text-center mb-4 sm:mb-6">
-                        <h3
-                          className={`text-base sm:text-lg font-bold font-['Space_Grotesk'] ${
-                            isDark ? "text-white" : "text-black"
-                          }`}
-                        >
-                          Player Stats
-                        </h3>
-                      </div>
-                      <div className="space-y-2 sm:space-y-3">
-                        {[
-                          { name: "Haaland", stat: "Goals", value: "12" },
-                          { name: "Haaland", stat: "xG", value: "11.8" },
-                          { name: "Salah", stat: "Assists", value: "8" },
-                          { name: "Salah", stat: "xA", value: "7.4" },
-                          {
-                            name: "De Bruyne",
-                            stat: "Key Passes",
-                            value: "25",
-                          },
-                        ].map((stat, i) => (
-                          <div
-                            key={i}
-                            className={`flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg backdrop-blur-sm ${
-                              isDark ? "bg-slate-800/50" : "bg-white/70"
-                            }`}
-                          >
-                            <div
-                              className={`w-8 sm:w-10 h-8 sm:h-10 rounded-full flex items-center justify-center ${
-                                isDark
-                                  ? "bg-gradient-to-br from-purple-500 to-blue-500"
-                                  : "bg-gradient-to-br from-emerald-400 to-lime-400"
-                              }`}
-                            >
-                              <span className="text-black text-xs font-bold">
-                                {stat.stat[0]}
-                              </span>
-                            </div>
-                            <div className="flex-1">
-                              <div
-                                className={`font-semibold text-sm sm:text-base ${
-                                  isDark ? "text-white" : "text-black"
-                                }`}
-                              >
-                                {stat.name}
-                              </div>
-                              <div
-                                className={`text-xs ${
-                                  isDark ? "text-slate-400" : "text-gray-700"
-                                }`}
-                              >
-                                {stat.stat}
-                              </div>
-                            </div>
-                            <div
-                              className={`font-bold text-sm ${
-                                isDark ? "text-green-400" : "text-emerald-400"
-                              }`}
-                            >
-                              {stat.value}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div
-                        className={`mt-4 sm:mt-6 p-2 sm:p-3 rounded-lg border ${
-                          isDark
-                            ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/30"
-                            : "bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`text-xs sm:text-sm ${
-                              isDark ? "text-slate-300" : "text-black"
-                            }`}
-                          >
-                            Top Performer
-                          </span>
-                          <span
-                            className={`text-lg sm:text-2xl font-bold ${
-                              isDark ? "text-purple-400" : "text-emerald-400"
-                            }`}
-                          >
-                            Haaland
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="w-full h-full bg-lime-400 rounded-[2rem] relative overflow-hidden animate-flip-and-disappear">
+                    <img
+                      src="/tactic.png"
+                      alt="App Screenshot"
+                      style={{ objectFit: "cover" }}
+                      className="rounded-[2rem]"
+                    />
                   </div>
                 </div>
               </div>
@@ -1080,55 +657,22 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section
-        id="features"
-        className={`relative z-20 py-20 px-6 ${
-          isDark ? "" : "bg-gradient-to-br from-emerald-400 to-lime-400"
-        }`}
-      >
+      <section id="features" className="relative z-20 py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div
-              className={`inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border ${
-                isDark
-                  ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/30"
-                  : "bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30"
-              } backdrop-blur-sm`}
-            >
-              <Gamepad2
-                className={`w-4 h-4 ${
-                  isDark ? "text-purple-400" : "text-black"
-                }`}
-              />
-              <span
-                className={`text-sm font-medium ${
-                  isDark ? "text-purple-300" : "text-black"
-                }`}
-              >
+            <div className="inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30 backdrop-blur-sm">
+              <Gamepad2 className="w-4 h-4 text-black" />
+              <span className="text-sm font-medium text-black">
                 Game-Changing Features
               </span>
             </div>
-            <h2
-              className={`text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] ${
-                isDark ? "text-white" : "bg-black bg-clip-text text-transparent"
-              } mb-6`}
-            >
+            <h2 className="text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] bg-black bg-clip-text text-transparent mb-6">
               Why Tactix is <br />
-              <span
-                className={`${
-                  isDark
-                    ? "bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
-                    : "bg-white bg-clip-text text-transparent"
-                }`}
-              >
+              <span className="bg-black bg-clip-text text-transparent">
                 Different
               </span>
             </h2>
-            <p
-              className={`text-xl max-w-3xl mx-auto font-['Poppins'] ${
-                isDark ? "text-slate-300" : "text-black"
-              }`}
-            >
+            <p className="text-xl max-w-3xl mx-auto font-['Poppins'] text-black">
               We've reimagined fantasy football from the ground up, combining
               cutting-edge technology with deep football intelligence to create
               the ultimate management experience.
@@ -1142,19 +686,15 @@ function App() {
                 title: "AI-Powered Predictions",
                 description:
                   "Our advanced machine learning algorithms analyze thousands of data points to predict player performance with unprecedented accuracy.",
-                color: isDark
-                  ? "from-purple-500 to-pink-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 stats: "94% accuracy rate",
               },
               {
-                icon: TrendingUp,
+                icon: Users,
                 title: "Real-Time Analytics",
                 description:
                   "Get instant insights on player form, fixture difficulty, and market trends to make informed transfer decisions.",
-                color: isDark
-                  ? "from-blue-500 to-cyan-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 stats: "Live data updates",
               },
               {
@@ -1162,9 +702,7 @@ function App() {
                 title: "Social Leagues",
                 description:
                   "Create private leagues with friends, join public competitions, and climb the global leaderboards with our enhanced social features.",
-                color: isDark
-                  ? "from-green-500 to-emerald-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 stats: "2300+ active users",
               },
               {
@@ -1172,67 +710,42 @@ function App() {
                 title: "Lightning Fast",
                 description:
                   "Built with cutting-edge technology for instant loading, smooth animations, and real-time updates that keep you ahead of the game.",
-                color: isDark
-                  ? "from-yellow-500 to-orange-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 stats: "<0.5s load time",
               },
               {
-                icon: Shield,
+                icon: Users,
                 title: "Advanced Security",
                 description:
                   "Your data is protected with bank-level encryption and security measures. Play with confidence knowing your information is safe.",
-                color: isDark
-                  ? "from-red-500 to-pink-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 stats: "256-bit encryption",
               },
               {
-                icon: Award,
+                icon: Trophy,
                 title: "Expert Insights",
                 description:
                   "Access exclusive content from Premier League analysts, former players, and fantasy football experts to gain the competitive edge.",
-                color: isDark
-                  ? "from-indigo-500 to-purple-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 stats: "50+ expert contributors",
               },
             ].map((feature, index) => (
               <div
                 key={index}
-                className={`group relative ${
-                  isDark
-                    ? "bg-slate-800/20 border-slate-700/50 hover:border-slate-600/50"
-                    : "bg-white/70 border-emerald-400/50 hover:border-lime-400/50"
-                } backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:transform hover:scale-105`}
+                className="group relative bg-white/70 border-emerald-400/50 hover:border-lime-400/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:transform hover:scale-105"
               >
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                  className={`w-16 h-16 bg-lime-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                 >
-                  <feature.icon className="w-8 h-8 text-white" />
+                  <feature.icon className="w-8 h-8 text-black" />
                 </div>
-                <h3
-                  className={`text-xl font-bold font-['Space_Grotesk'] ${
-                    isDark ? "text-white" : "text-black"
-                  } mb-4`}
-                >
+                <h3 className="text-xl font-bold font-['Space_Grotesk'] text-black mb-4">
                   {feature.title}
                 </h3>
-                <p
-                  className={`leading-relaxed mb-4 font-['Poppins'] ${
-                    isDark ? "text-slate-300" : "text-gray-700"
-                  }`}
-                >
+                <p className="leading-relaxed mb-4 font-['Poppins'] text-black">
                   {feature.description}
                 </p>
-                <div
-                  className={`inline-flex items-center space-x-2 text-sm font-semibold ${
-                    isDark ? "text-purple-400" : "text-emerald-400"
-                  }`}
-                >
-                  <div className="w-2 h-2 bg-current rounded-full"></div>
-                  <span>{feature.stats}</span>
-                </div>
+                <div className="inline-flex items-center space-x-2 text-sm font-semibold text-emerald-400"></div>
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`}
                 ></div>
@@ -1245,54 +758,26 @@ function App() {
       {/* How to Play Section */}
       <section
         id="how-to-play"
-        className={`relative z-20 py-20 px-6 ${
-          isDark
-            ? "bg-transparent"
-            : "bg-gradient-to-br from-emerald-400 to-lime-400"
-        }`}
+        className="relative z-20 py-20 px-6 bg-gradient-to-br from-emerald-400 to-lime-400"
       >
         <div className="max-w-6xl mx-auto">
-          {/* ---------------- HOW TO PLAY ---------------- */}
           <div className="text-center mb-16">
-            <div
-              className={`inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border ${
-                isDark
-                  ? "bg-gradient-to-r from-green-500/20 to-blue-500/20 border-green-500/30"
-                  : "bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30"
-              } backdrop-blur-sm`}
-            >
-              <Trophy
-                className={`w-4 h-4 ${
-                  isDark ? "text-green-400" : "text-black"
-                }`}
-              />
-              <span
-                className={`text-sm font-medium ${
-                  isDark ? "text-green-300" : "text-black"
-                }`}
-              >
+            <div className="inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30 backdrop-blur-sm">
+              <Trophy className="w-4 h-4 text-black" />
+              <span className="text-sm font-medium text-black">
                 Master the Game
               </span>
             </div>
-            <h2
-              className={`text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] ${
-                isDark ? "text-white" : "bg-black bg-clip-text text-transparent"
-              } mb-6`}
-            >
+            <h2 className="text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] bg-black bg-clip-text text-transparent mb-6">
               How to play ?
             </h2>
-            <p
-              className={`text-xl max-w-3xl mx-auto font-['Poppins'] ${
-                isDark ? "text-slate-300" : "text-black"
-              }`}
-            >
+            <p className="text-xl max-w-3xl mx-auto font-['Poppins'] text-black">
               Follow our proven strategy guide to transform from a casual player
               into a fantasy football legend. These are the exact steps used by
               our top-ranked managers.
             </p>
           </div>
 
-          {/* ---------------- 3 STEPS ---------------- */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             {[
               {
@@ -1300,9 +785,7 @@ function App() {
                 title: "Build Your Dream Squad",
                 description:
                   "Start with £100m budget to select 15 players. Use our AI recommendations to identify undervalued gems and avoid popular traps. Choose your formation wisely - it's the foundation of success.",
-                color: isDark
-                  ? "from-purple-500 to-pink-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 tips: [
                   "Focus on consistent performers",
                   "Avoid injury-prone players",
@@ -1314,9 +797,7 @@ function App() {
                 title: "Master the Art of Timing",
                 description:
                   "Use your transfers strategically, activate chips at optimal moments, and captain the right player each week. Our advanced analytics show you exactly when to make your moves.",
-                color: isDark
-                  ? "from-blue-500 to-cyan-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 tips: [
                   "Save transfers for double gameweeks",
                   "Use chips during favorable fixtures",
@@ -1328,9 +809,7 @@ function App() {
                 title: "Dominate Your Leagues",
                 description:
                   "Track your progress across multiple leagues, analyze your rivals' strategies, and use our exclusive insights to stay ahead. Consistency beats luck every time.",
-                color: isDark
-                  ? "from-green-500 to-emerald-500"
-                  : "from-emerald-400 to-lime-400",
+                color: "from-emerald-400 to-lime-400",
                 tips: [
                   "Join multiple league types",
                   "Study top managers' strategies",
@@ -1340,11 +819,7 @@ function App() {
             ].map((step, index) => (
               <div
                 key={index}
-                className={`group relative ${
-                  isDark
-                    ? "bg-slate-800/30 border-slate-700/50 hover:border-slate-600/50"
-                    : "bg-white/80 border-emerald-400/50 hover:border-lime-400/50"
-                } backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:transform hover:scale-105`}
+                className="group relative bg-white/80 border-emerald-400/50 hover:border-lime-400/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:transform hover:scale-105"
               >
                 <div className="flex items-center space-x-4 mb-6">
                   <div
@@ -1352,56 +827,26 @@ function App() {
                   >
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                      isDark
-                        ? "bg-slate-700 text-white"
-                        : "bg-emerald-400/50 text-black"
-                    }`}
-                  >
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold bg-emerald-400/50 text-black">
                     {index + 1}
                   </div>
                 </div>
 
-                <h3
-                  className={`text-xl font-bold font-['Space_Grotesk'] ${
-                    isDark ? "text-white" : "text-black"
-                  } mb-4`}
-                >
+                <h3 className="text-xl font-bold font-['Space_Grotesk'] text-black mb-4">
                   {step.title}
                 </h3>
-                <p
-                  className={`leading-relaxed mb-6 font-['Poppins'] ${
-                    isDark ? "text-slate-300" : "text-gray-700"
-                  }`}
-                >
+                <p className="leading-relaxed mb-6 font-['Poppins'] text-gray-700">
                   {step.description}
                 </p>
 
                 <div className="space-y-2">
-                  <h4
-                    className={`text-sm font-semibold ${
-                      isDark ? "text-purple-400" : "text-emerald-400"
-                    } mb-2`}
-                  >
+                  <h4 className="text-sm font-semibold text-emerald-400 mb-2">
                     Pro Tips:
                   </h4>
                   {step.tips.map((tip, tipIndex) => (
                     <div key={tipIndex} className="flex items-start space-x-2">
-                      <div
-                        className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${
-                          isDark
-                            ? "bg-gradient-to-r from-purple-400 to-blue-400"
-                            : "bg-gradient-to-r from-emerald-400 to-lime-400"
-                        }`}
-                      ></div>
-                      <span
-                        className={`text-sm ${
-                          isDark ? "text-slate-400" : "text-gray-700"
-                        }`}
-                      >
-                        {tip}
-                      </span>
+                      <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gradient-to-r from-emerald-400 to-lime-400"></div>
+                      <span className="text-sm text-gray-700">{tip}</span>
                     </div>
                   ))}
                 </div>
@@ -1413,53 +858,23 @@ function App() {
             ))}
           </div>
 
-          {/* ---------------- TESTIMONIALS ---------------- */}
-          <div
-            className={`${
-              isDark
-                ? "bg-slate-800/40 border-slate-700/50"
-                : "bg-white/60 border-emerald-400/50"
-            } backdrop-blur-sm rounded-2xl p-8 border`}
-          >
+          <div className="bg-white/60 border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
             <div className="text-center mb-12">
-              <span
-                className={`px-4 py-1 rounded-full border text-sm ${
-                  isDark
-                    ? "border-yellow-400 text-yellow-400"
-                    : "border-emerald-400 text-emerald-400"
-                }`}
-              >
+              <span className="px-4 py-1 rounded-full border text-sm border-emerald-400 text-emerald-400">
                 User Reviews
               </span>
-              <h2
-                className={`text-3xl md:text-4xl font-bold mt-4 font-['Space_Grotesk'] ${
-                  isDark
-                    ? "text-white"
-                    : "bg-white bg-clip-text text-transparent"
-                }`}
-              >
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
                 What{" "}
-                <span
-                  className={`${
-                    isDark
-                      ? "text-purple-500"
-                      : "bg-black bg-clip-text text-transparent"
-                  }`}
-                >
+                <span className="bg-black bg-clip-text text-transparent">
                   Players
                 </span>{" "}
                 Say
               </h2>
-              <p
-                className={`mt-2 max-w-xl mx-auto ${
-                  isDark ? "text-slate-300" : "text-black"
-                }`}
-              >
+              <p className="mt-2 max-w-xl mx-auto text-black">
                 Hear from our top players
               </p>
             </div>
 
-            {/* Testimonials Grid */}
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
@@ -1478,18 +893,9 @@ function App() {
                     "Great fantasy app. The player stats updates and transfers are super easy to manage.",
                 },
               ].map((item, index) => (
-                <div
-                  key={index}
-                  className={`p-6 rounded-xl shadow-md ${
-                    isDark ? "bg-slate-800/60" : "bg-white"
-                  }`}
-                >
+                <div key={index} className="p-6 rounded-xl shadow-md bg-white">
                   <div className="flex items-center mb-4">
-                    <div
-                      className={`flex space-x-1 ${
-                        isDark ? "text-yellow-400" : "text-emerald-400"
-                      }`}
-                    >
+                    <div className="flex space-x-1 text-emerald-400">
                       {Array(5)
                         .fill(0)
                         .map((_, i) => (
@@ -1505,63 +911,29 @@ function App() {
                         ))}
                     </div>
                   </div>
-                  <p
-                    className={`mb-4 italic ${
-                      isDark ? "text-slate-300" : "text-gray-600"
-                    }`}
-                  >
-                    "{item.quote}"
-                  </p>
-                  <p
-                    className={`font-semibold ${
-                      isDark ? "text-white" : "text-black"
-                    }`}
-                  >
-                    {item.name}
-                  </p>
-                  <p
-                    className={`text-sm ${
-                      isDark ? "text-slate-400" : "text-gray-700"
-                    }`}
-                  >
-                    Player
-                  </p>
+                  <p className="mb-4 italic text-gray-600">"{item.quote}"</p>
+                  <p className="font-semibold text-black">{item.name}</p>
+                  <p className="text-sm text-gray-700">Player</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ---------------- PARTNERS ---------------- */}
           <div className="mt-20">
-            <h3
-              className={`text-center text-2xl lg:text-5xl font-bold mb-8 font-['Space_Grotesk'] ${
-                isDark ? "text-white" : "bg-white bg-clip-text text-transparent"
-              }`}
-            >
+            <h3 className="text-center text-2xl lg:text-5xl font-bold mb-8 font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
               Our{" "}
-              <span
-                className={`${
-                  isDark
-                    ? "text-purple-500"
-                    : "bg-black bg-clip-text text-transparent"
-                }`}
-              >
+              <span className="bg-black bg-clip-text text-transparent">
                 Partners
               </span>
             </h3>
 
             <div className="relative w-full overflow-hidden">
               <div className="flex animate-marquee whitespace-nowrap">
-                {/* First set of logos */}
                 {["/v.jpg", "/v (3).jpg", "/v (2).jpg", "/v (1).jpg"].map(
                   (logo, i) => (
                     <div
                       key={`logo-${i}`}
-                      className={`flex-shrink-0 w-24 h-24 rounded-full border flex items-center justify-center shadow-md mx-6 ${
-                        isDark
-                          ? "bg-white border-gray-300"
-                          : "bg-white border-emerald-400/50"
-                      }`}
+                      className="flex-shrink-0 w-24 h-24 rounded-full border flex items-center justify-center shadow-md mx-6 bg-white border-emerald-400/50"
                     >
                       <img
                         src={logo}
@@ -1571,16 +943,11 @@ function App() {
                     </div>
                   )
                 )}
-                {/* Duplicated set of logos for seamless scrolling */}
                 {["/v.jpg", "/v (3).jpg", "/v (2).jpg", "/v (1).jpg"].map(
                   (logo, i) => (
                     <div
                       key={`logo-duplicate-${i}`}
-                      className={`flex-shrink-0 w-24 h-24 rounded-full border flex items-center justify-center shadow-md mx-6 ${
-                        isDark
-                          ? "bg-white border-gray-300"
-                          : "bg-white border-emerald-400/50"
-                      }`}
+                      className="flex-shrink-0 w-24 h-24 rounded-full border flex items-center justify-center shadow-md mx-6 bg-white border-emerald-400/50"
                     >
                       <img
                         src={logo}
@@ -1597,55 +964,22 @@ function App() {
       </section>
 
       {/* Download Section */}
-      <section
-        id="download"
-        className={`relative z-20 py-20 px-6 ${
-          isDark
-            ? "bg-transparent"
-            : "bg-gradient-to-br from-emerald-400 to-lime-400"
-        }`}
-      >
+      <section id="download" className="relative z-20 py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <div
-            className={`inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border ${
-              isDark
-                ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-blue-500/30"
-                : "bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30"
-            } backdrop-blur-sm`}
-          >
-            <Gamepad2
-              className={`w-4 h-4 ${isDark ? "text-blue-400" : "text-black"}`}
-            />
-            <span
-              className={`text-sm font-medium ${
-                isDark ? "text-blue-300" : "text-black"
-              }`}
-            >
+          <div className="inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30 backdrop-blur-sm">
+            <Gamepad2 className="w-4 h-4 text-black" />
+            <span className="text-sm font-medium text-black">
               Available Now
             </span>
           </div>
 
-          <h2
-            className={`text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] ${
-              isDark ? "text-white" : "bg-white bg-clip-text text-transparent"
-            } mb-6`}
-          >
+          <h2 className="text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] bg-black bg-clip-text text-transparent mb-6">
             Download{" "}
-            <span
-              className={`${
-                isDark
-                  ? "bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-                  : "bg-black bg-clip-text text-transparent"
-              }`}
-            >
+            <span className="bg-black bg-clip-text text-transparent">
               Tactix™
             </span>
           </h2>
-          <p
-            className={`text-xl mb-12 max-w-2xl mx-auto font-['Poppins'] ${
-              isDark ? "text-slate-300" : "text-black"
-            }`}
-          >
+          <p className="text-xl mb-12 max-w-2xl mx-auto font-['Poppins'] text-black">
             Join millions of managers who've already discovered the future of
             fantasy football. Available on all your favorite platforms with
             seamless sync across devices.
@@ -1654,95 +988,18 @@ function App() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
               <div className="w-44 h-14 hover:shadow-2xl transition-shadow duration-300">
-                <AppStoreBadge isDark={isDark} />
+                <AppStoreBadge />
               </div>
             </div>
             <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
               <div className="w-44 h-14 hover:shadow-2xl transition-shadow duration-300">
-                <GooglePlayBadge isDark={isDark} />
+                <GooglePlayBadge />
               </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                icon: Star,
-                value: "4.9",
-                label: "App Store Rating",
-                subtext: "Based on 1700+ reviews",
-              },
-              {
-                icon: Users,
-                value: "2000+",
-                label: "Active Downloads",
-                subtext: "Growing approximately by 500 daily",
-              },
-              {
-                icon: Clock,
-                value: "350MB",
-                label: "App Size",
-                subtext: "fast download",
-              },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className={`${
-                  isDark
-                    ? "bg-slate-800/20 border-slate-700/50"
-                    : "bg-white/70 border-emerald-400/50"
-                } backdrop-blur-sm rounded-2xl p-6 border`}
-              >
-                <div className="flex items-center justify-center mb-4">
-                  <div
-                    className={`w-12 h-12 bg-gradient-to-br ${
-                      isDark
-                        ? "from-blue-500 to-purple-500"
-                        : "from-emerald-400 to-lime-400"
-                    } rounded-xl flex items-center justify-center`}
-                  >
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <div
-                  className={`text-2xl font-bold bg-gradient-to-r ${
-                    isDark
-                      ? "from-blue-400 to-purple-400"
-                      : "from-emerald-400 to-lime-400"
-                  } bg-clip-text text-transparent mb-2`}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  className={`font-semibold ${
-                    isDark ? "text-white" : "text-black"
-                  } mb-1`}
-                >
-                  {stat.label}
-                </div>
-                <div
-                  className={`text-sm ${
-                    isDark ? "text-slate-400" : "text-gray-700"
-                  }`}
-                >
-                  {stat.subtext}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div
-            className={`${
-              isDark
-                ? "bg-slate-800/20 border-slate-700/50"
-                : "bg-white/70 border-emerald-400/50"
-            } backdrop-blur-sm rounded-2xl p-8 border`}
-          >
-            <h3
-              className={`text-xl font-bold font-['Space_Grotesk'] ${
-                isDark ? "text-white" : "text-black"
-              } mb-4`}
-            >
+          <div className="bg-white/70 border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
+            <h3 className="text-xl font-bold font-['Space_Grotesk'] text-black mb-4">
               What's New in Version 3.0
             </h3>
             <div className="grid md:grid-cols-2 gap-4 text-left">
@@ -1756,17 +1013,9 @@ function App() {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className={`flex items-center space-x-3 ${
-                    isDark ? "text-slate-300" : "text-gray-700"
-                  }`}
+                  className="flex items-center space-x-3 text-gray-700"
                 >
-                  <div
-                    className={`w-2 h-2 bg-gradient-to-r ${
-                      isDark
-                        ? "from-blue-400 to-purple-400"
-                        : "from-emerald-400 to-lime-400"
-                    } rounded-full`}
-                  ></div>
+                  <div className="w-2 h-2 bg-gradient-to-r from-emerald-400 to-lime-400 rounded-full"></div>
                   <span>{feature}</span>
                 </div>
               ))}
@@ -1778,55 +1027,23 @@ function App() {
       {/* Contact Section */}
       <section
         id="contact"
-        className={`relative z-20 py-20 px-6 ${
-          isDark
-            ? "bg-transparent"
-            : "bg-gradient-to-br from-emerald-400 to-lime-400"
-        }`}
+        className="relative z-20 py-20 px-6 bg-gradient-to-br from-emerald-400 to-lime-400"
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <div
-              className={`inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border ${
-                isDark
-                  ? "bg-gradient-to-r from-green-500/20 to-blue-500/20 border-green-500/30"
-                  : "bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30"
-              } backdrop-blur-sm`}
-            >
-              <Mail
-                className={`w-4 h-4 ${
-                  isDark ? "text-green-400" : "text-black"
-                }`}
-              />
-              <span
-                className={`text-sm font-medium ${
-                  isDark ? "text-green-300" : "text-black"
-                }`}
-              >
+            <div className="inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30 backdrop-blur-sm">
+              <Mail className="w-4 h-4 text-black" />
+              <span className="text-sm font-medium text-black">
                 Get in Touch
               </span>
             </div>
-            <h2
-              className={`text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] ${
-                isDark ? "text-white" : "bg-black bg-clip-text text-transparent"
-              } mb-6`}
-            >
+            <h2 className="text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] bg-black bg-clip-text text-transparent mb-6">
               Need{" "}
-              <span
-                className={`${
-                  isDark
-                    ? "bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent"
-                    : "bg-white bg-clip-text text-transparent"
-                }`}
-              >
+              <span className="bg-white bg-clip-text text-transparent">
                 Help?
               </span>
             </h2>
-            <p
-              className={`text-xl font-['Poppins'] ${
-                isDark ? "text-slate-300" : "text-black"
-              }`}
-            >
+            <p className="text-xl font-['Poppins'] text-black">
               Our expert support team is here 24/7 to help you dominate your
               fantasy leagues. Whether you need tactical advice or technical
               support, we've got you covered.
@@ -1836,146 +1053,66 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div className="flex items-center space-x-4">
-                <div
-                  className={`w-14 h-14 bg-gradient-to-br ${
-                    isDark
-                      ? "from-purple-500 to-blue-500"
-                      : "from-emerald-400 to-lime-400"
-                  } rounded-2xl flex items-center justify-center shadow-lg`}
-                >
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-lime-400 rounded-2xl flex items-center justify-center shadow-lg">
                   <Mail className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3
-                    className={`text-lg font-semibold font-['Space_Grotesk'] ${
-                      isDark ? "text-white" : "text-black"
-                    }`}
-                  >
+                  <h3 className="text-lg font-semibold font-['Space_Grotesk'] text-black">
                     Email Support
                   </h3>
-                  <p
-                    className={`${isDark ? "text-slate-300" : "text-gray-700"}`}
-                  >
-                    bekadessalegn@gmail.com
-                  </p>
-                  <p
-                    className={`text-sm ${
-                      isDark ? "text-slate-400" : "text-gray-600"
-                    }`}
-                  >
+                  <p className="text-white">bekadessalegn@gmail.com</p>
+                  <p className="text-sm text-gray-600">
                     Response within 2 hours
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div
-                  className={`w-14 h-14 bg-gradient-to-br ${
-                    isDark
-                      ? "from-green-500 to-emerald-500"
-                      : "from-emerald-400 to-lime-400"
-                  } rounded-2xl flex items-center justify-center shadow-lg`}
-                >
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-lime-400 rounded-2xl flex items-center justify-center shadow-lg">
                   <Phone className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3
-                    className={`text-lg font-semibold font-['Space_Grotesk'] ${
-                      isDark ? "text-white" : "text-black"
-                    }`}
-                  >
+                  <h3 className="text-lg font-semibold font-['Space_Grotesk'] text-black">
                     Phone Support
                   </h3>
-                  <p
-                    className={`${isDark ? "text-slate-300" : "text-gray-700"}`}
-                  >
-                    +251 97 806 1901
-                  </p>
-                  <p
-                    className={`text-sm ${
-                      isDark ? "text-slate-400" : "text-gray-600"
-                    }`}
-                  >
-                    Available 24/7
-                  </p>
+                  <p className="text-white">+251 97 806 1901</p>
+                  <p className="text-sm text-gray-600">Available 24/7</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div
-                  className={`w-14 h-14 bg-gradient-to-br ${
-                    isDark
-                      ? "from-pink-500 to-rose-500"
-                      : "from-emerald-400 to-lime-400"
-                  } rounded-2xl flex items-center justify-center shadow-lg`}
-                >
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-lime-400 rounded-2xl flex items-center justify-center shadow-lg">
                   <MapPin className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3
-                    className={`text-lg font-semibold font-['Space_Grotesk'] ${
-                      isDark ? "text-white" : "text-black"
-                    }`}
-                  >
+                  <h3 className="text-lg font-semibold font-['Space_Grotesk'] text-black">
                     Headquarters
                   </h3>
-                  <p
-                    className={`${isDark ? "text-slate-300" : "text-gray-700"}`}
-                  >
-                    Washington
-                  </p>
-                  <p
-                    className={`text-sm ${
-                      isDark ? "text-slate-400" : "text-gray-600"
-                    }`}
-                  >
-                    Spokane Valley
-                  </p>
+                  <p className="text-white">Washington</p>
+                  <p className="text-sm text-gray-600">Spokane Valley</p>
                 </div>
               </div>
 
-              <div
-                className={`${
-                  isDark
-                    ? "bg-slate-800/30 border-slate-700/50"
-                    : "bg-white/60 border-emerald-400/50"
-                } backdrop-blur-sm rounded-2xl p-6 border`}
-              >
-                <h4
-                  className={`font-semibold font-['Space_Grotesk'] ${
-                    isDark ? "text-white" : "text-black"
-                  } mb-3`}
-                >
+              <div className="bg-white border-emerald-400/50 backdrop-blur-sm rounded-2xl p-6 border">
+                <h4 className="font-semibold font-['Space_Grotesk'] text-black mb-3">
                   Quick Links
                 </h4>
                 <div className="space-y-2">
                   <a
                     href="https://t.me/TactixApp"
-                    className={`block ${
-                      isDark
-                        ? "text-slate-300 hover:text-purple-400"
-                        : "text-gray-700 hover:text-emerald-400"
-                    } transition-colors`}
+                    className="block text-white hover:text-emerald-400 transition-colors"
                   >
                     ✈️ Telegram
                   </a>
                   <a
                     href="https://t.me/TactixApp"
-                    className={`block ${
-                      isDark
-                        ? "text-slate-300 hover:text-purple-400"
-                        : "text-gray-700 hover:text-emerald-400"
-                    } transition-colors`}
+                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
                   >
                     🐥 Twitter
                   </a>
                   <a
                     href="https://t.me/TactixApp"
-                    className={`block ${
-                      isDark
-                        ? "text-slate-300 hover:text-purple-400"
-                        : "text-gray-700 hover:text-emerald-400"
-                    } transition-colors`}
+                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
                   >
                     📸 Instagram
                   </a>
@@ -1983,65 +1120,33 @@ function App() {
               </div>
             </div>
 
-            <div
-              className={`${
-                isDark
-                  ? "bg-slate-800/30 border-slate-700/50"
-                  : "bg-white/80 border-emerald-400/50"
-              } backdrop-blur-sm rounded-2xl p-8 border`}
-            >
+            <div className="bg-white border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
               <form className="space-y-6">
                 <div>
-                  <label
-                    className={`block text-sm font-medium ${
-                      isDark ? "text-slate-300" : "text-gray-700"
-                    } mb-2`}
-                  >
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Your Name
                   </label>
                   <input
                     type="text"
                     placeholder="Enter your full name"
-                    className={`w-full px-4 py-3 ${
-                      isDark
-                        ? "bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-purple-400"
-                        : "bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400"
-                    } border rounded-xl focus:outline-none transition-colors duration-300`}
+                    className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300"
                   />
                 </div>
                 <div>
-                  <label
-                    className={`block text-sm font-medium ${
-                      isDark ? "text-slate-300" : "text-gray-700"
-                    } mb-2`}
-                  >
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address
                   </label>
                   <input
                     type="email"
                     placeholder="your.email@example.com"
-                    className={`w-full px-4 py-3 ${
-                      isDark
-                        ? "bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-purple-400"
-                        : "bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400"
-                    } border rounded-xl focus:outline-none transition-colors duration-300`}
+                    className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300"
                   />
                 </div>
                 <div>
-                  <label
-                    className={`block text-sm font-medium ${
-                      isDark ? "text-slate-300" : "text-gray-700"
-                    } mb-2`}
-                  >
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Subject
                   </label>
-                  <select
-                    className={`w-full px-4 py-3 ${
-                      isDark
-                        ? "bg-slate-700/50 border-slate-600/50 text-white focus:border-purple-400"
-                        : "bg-white/70 border-emerald-400/50 text-gray-900 focus:border-emerald-400"
-                    } border rounded-xl focus:outline-none transition-colors duration-300`}
-                  >
+                  <select className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300">
                     <option>General Inquiry</option>
                     <option>Technical Support</option>
                     <option>Account Issues</option>
@@ -2050,30 +1155,18 @@ function App() {
                   </select>
                 </div>
                 <div>
-                  <label
-                    className={`block text-sm font-medium ${
-                      isDark ? "text-slate-300" : "text-gray-700"
-                    } mb-2`}
-                  >
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Message
                   </label>
                   <textarea
                     rows={4}
                     placeholder="Tell us how we can help you dominate your fantasy league..."
-                    className={`w-full px-4 py-3 ${
-                      isDark
-                        ? "bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-purple-400"
-                        : "bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400"
-                    } border rounded-xl focus:outline-none transition-colors duration-300 resize-none`}
+                    className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300 resize-none"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className={`w-full bg-gradient-to-r ${
-                    isDark
-                      ? "from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-                      : "from-emerald-400 to-lime-400 hover:from-emerald-500 hover:to-lime-500"
-                  } py-3 rounded-xl text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg`}
+                  className="w-full bg-gradient-to-r from-emerald-400 to-lime-400 hover:from-emerald-500 hover:to-lime-500 py-3 rounded-xl text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Send Message
                 </button>
@@ -2084,32 +1177,16 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer
-        className={`relative z-20 border-t ${
-          isDark
-            ? "border-slate-800/50 bg-transparent"
-            : "border-emerald-400/50 bg-gradient-to-br from-emerald-400 to-lime-400"
-        } py-12 px-6`}
-      >
-        <div className="max-w-6xl mx-auto">
+      <footer className="relative z-20 bg-black/95  py-12 px-6">
+        <div className="max-w-6xl mx-auto ">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <span
-                  className={`text-2xl font-bold bg-gradient-to-r ${
-                    isDark
-                      ? "from-purple-400 to-blue-400"
-                      : "from-black to-black/80"
-                  } bg-clip-text text-transparent font-['Space_Grotesk']`}
-                >
+                <span className="text-2xl font-bold bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent font-['Space_Grotesk']">
                   Tactix™
                 </span>
               </div>
-              <p
-                className={`mb-2 max-w-md font-['Poppins'] ${
-                  isDark ? "text-slate-400" : "text-black"
-                }`}
-              >
+              <p className="mb-2 max-w-md font-['Poppins'] bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent ">
                 The most advanced fantasy Premier League platform, trusted by
                 millions of managers worldwide. Elevate your game with
                 AI-powered insights and professional-grade tools.
@@ -2117,41 +1194,25 @@ function App() {
             </div>
 
             <div>
-              <h4
-                className={`font-semibold font-['Space_Grotesk'] ${
-                  isDark ? "text-white" : "text-black"
-                } mb-4`}
-              >
+              <h4 className="font-semibold font-['Space_Grotesk'] bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent mb-4">
                 Product
               </h4>
               <div className="space-y-2">
                 <a
                   href="#features"
-                  className={`block ${
-                    isDark
-                      ? "text-slate-400 hover:text-white"
-                      : "text-gray-700 hover:text-emerald-400"
-                  } transition-colors`}
+                  className="block bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent hover:text-emerald-400 transition-colors"
                 >
                   Features
                 </a>
                 <a
                   href="#how-to-play"
-                  className={`block ${
-                    isDark
-                      ? "text-slate-400 hover:text-white"
-                      : "text-gray-700 hover:text-emerald-400"
-                  } transition-colors`}
+                  className="block bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent hover:text-emerald-400 transition-colors"
                 >
                   How to Play
                 </a>
                 <a
                   href="#download"
-                  className={`block ${
-                    isDark
-                      ? "text-slate-400 hover:text-white"
-                      : "text-gray-700 hover:text-emerald-400"
-                  } transition-colors`}
+                  className="block bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent hover:text-emerald-400 transition-colors"
                 >
                   Download
                 </a>
@@ -2159,18 +1220,11 @@ function App() {
             </div>
           </div>
 
-          <div
-            className={`border-t ${
-              isDark ? "border-slate-800/50" : "border-emerald-400/50"
-            } pt-8 flex flex-col md:flex-row items-center justify-between`}
-          >
-            <div
-              className={`text-sm text-center md:text-left mb-4 md:mb-0 ${
-                isDark ? "text-slate-400" : "text-black"
-              }`}
-            >
+          <div className="border-t border-emerald-400/50 pt-8 flex flex-col md:flex-row items-center justify-between">
+            <div className="text-sm text-center md:text-left mb-4 md:mb-0 bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent">
               <p>
-                &copy; {new Date().getFullYear()} Tactix™ Fantasy Football. All rights reserved.
+                &copy; {new Date().getFullYear()} Tactix™ Fantasy Football. All
+                rights reserved.
               </p>
               <p className="mt-1">
                 Revolutionizing fantasy football, one gameweek at a time.
@@ -2178,16 +1232,8 @@ function App() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div
-                  className={`w-2 h-2 rounded-full animate-pulse ${
-                    isDark ? "bg-green-400" : "bg-emerald-400"
-                  }`}
-                ></div>
-                <span
-                  className={`text-sm ${
-                    isDark ? "text-slate-400" : "text-black"
-                  }`}
-                >
+                <div className="w-2 h-2 rounded-full animate-pulse bg-emerald-400"></div>
+                <span className="text-sm bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent">
                   All systems operational
                 </span>
               </div>
