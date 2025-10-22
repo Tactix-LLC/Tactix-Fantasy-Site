@@ -292,7 +292,21 @@ const FootballField = ({
   );
 };
 
-const HeroSection = () => {
+const HeroSection = ({ scrollY }: { scrollY: number }) => {
+  const images = ["/tactic.png", "/screen2.png", "/screen3.png",];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000); 
+
+    return () => clearInterval(interval); 
+  }, [images.length]);
+
   return (
     <section className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-emerald-400 to-lime-400">
       <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
@@ -337,138 +351,29 @@ const HeroSection = () => {
         {/* iPhone Mockups */}
         <div className="relative flex justify-center">
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-8 sm:space-y-0 sm:space-x-4 md:space-x-8 max-w-full">
-            {/* iPhone Frame - League Table */}
+            {/* iPhone Frame - Sliding Images */}
             <div
               className="relative transform hover:scale-105 transition-all duration-500 w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px]"
               style={{ transform: `translateY(${scrollY * -0.1}px)` }}
             >
-              <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
+              <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-3 shadow-2xl">
                 <div className="w-full h-full bg-lime-400 rounded-[2rem] relative overflow-hidden">
-                  <div className="absolute top-2 sm:top-6 left-1/2 transform -translate-x-1/2 w-20 h-5 sm:h-6 bg-black rounded-full"></div>
-                  <div className="pt-10 sm:pt-12 p-3 sm:p-4">
-                    <div className="text-center mb-4 sm:mb-6">
-                      <h3 className="text-base sm:text-lg font-bold mb-2 font-['Space_Grotesk'] text-black">
-                        Global Ranking
-                      </h3>
-                      <div className="flex justify-center space-x-4 sm:space-x-6">
-                        <div className="text-center">
-                          <div className="text-lg sm:text-2xl font-bold text-emerald-400">
-                            1st
-                          </div>
-                          <div className="text-xs text-gray-700">Position</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-lg sm:text-2xl font-bold text-emerald-400">
-                            2,456
-                          </div>
-                          <div className="text-xs text-gray-700">Points</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-lg sm:text-2xl font-bold text-emerald-400">
-                            98%
-                          </div>
-                          <div className="text-xs text-gray-700">Top</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      {[
-                        { rank: 1, name: "You", points: 2456, change: "+3" },
-                        {
-                          rank: 2,
-                          name: "TacticalGenius",
-                          points: 2445,
-                          change: "-1",
-                        },
-                        {
-                          rank: 3,
-                          name: "PremierPro",
-                          points: 2432,
-                          change: "+1",
-                        },
-                        {
-                          rank: 4,
-                          name: "FantasyKing",
-                          points: 2428,
-                          change: "-2",
-                        },
-                        {
-                          rank: 5,
-                          name: "GoalMachine",
-                          points: 2415,
-                          change: "0",
-                        },
-                        {
-                          rank: 6,
-                          name: "MidfieldMaster",
-                          points: 2401,
-                          change: "+1",
-                        },
-                      ].map((player, i) => (
-                        <div
-                          key={i}
-                          className={`flex items-center space-x-2 sm:space-x-3 p-2 rounded-lg ${
-                            i === 0 ? "bg-emerald-400/20" : "bg-white/50"
-                          }`}
-                        >
-                          <div
-                            className={`w-5 sm:w-6 h-5 sm:h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                              i === 0
-                                ? "bg-emerald-400 text-black"
-                                : "bg-gray-300 text-gray-700"
-                            }`}
-                          >
-                            {player.rank}
-                          </div>
-                          <div className="flex-1">
-                            <div
-                              className={`font-semibold text-sm sm:text-base ${
-                                i === 0 ? "text-black" : "text-black"
-                              }`}
-                            >
-                              {player.name}
-                            </div>
-                          </div>
-                          <div
-                            className={`text-xs ${
-                              player.change.startsWith("+")
-                                ? "text-emerald-400"
-                                : player.change.startsWith("-")
-                                ? "text-red-400"
-                                : "text-gray-700"
-                            }`}
-                          >
-                            {player.change}
-                          </div>
-                          <div
-                            className={`font-bold text-sm ${
-                              i === 0 ? "text-emerald-400" : "text-black"
-                            }`}
-                          >
-                            {player.points}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  <div
+                    className="w-full h-full transition-transform duration-700 ease-in-out"
+                    style={{
+                      transform: `translateY(-${currentImageIndex * 100}%)`,
+                    }}
+                  >
+                    {images.map((src, index) => (
+                      <img
+                        key={index}
+                        src={src}
+                        alt={`App Screenshot ${index + 1}`}
+                        style={{ objectFit: "cover" }}
+                        className="w-full h-full rounded-[2rem]"
+                      />
+                    ))}
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* iPhone Frame - Image with Animation */}
-            <div
-              className="relative w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px] animate-flip-and-swipe"
-              style={{ transform: `translateY(${scrollY * -0.1}px)` }}
-            >
-              <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                <div className="w-full h-full bg-lime-400 rounded-[2rem] relative overflow-hidden">
-                  <img
-                    src="/tactic.png"
-                    alt="App Screenshot"
-                    style={{ objectFit: "cover" }}
-                    className="rounded-[2rem]"
-                  />
                 </div>
               </div>
             </div>
@@ -478,6 +383,7 @@ const HeroSection = () => {
     </section>
   );
 };
+
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
@@ -526,7 +432,7 @@ function App() {
       <nav className="relative z-50 flex items-center justify-between sm:justify-around px-6 py-6 backdrop-blur-md bg-gradient-to-r from-emerald-400 to-lime-40">
         <div className="flex items-center space-x-3">
           <img
-            src="/Tactix_logo.svg"
+            src="/Tactix_logo_black.svg"
             alt="Tactix Logo"
             className="h-14 w-auto"
           />
@@ -592,69 +498,7 @@ function App() {
       )}
 
       {/* Hero Section */}
-      <section className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-emerald-400 to-lime-400">
-        <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
-          <div className="text-center lg:text-left">
-            <div className="inline-flex items-center space-x-2 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 border bg-black border-black/30 backdrop-blur-sm">
-              <Zap className="w-4 h-4 text-white" />
-              <span className="text-xs sm:text-sm font-medium text-white">
-                The Future of Fantasy Football
-              </span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
-              <span className="bg-black bg-clip-text text-transparent">
-                Dominate Every
-              </span>
-              <br />
-              <span className="bg-black bg-clip-text text-transparent">
-                Gameweek
-              </span>
-            </h1>
-
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-['Poppins'] text-black">
-              Experience the most advanced fantasy Premier League platform ever
-              created. Powered by AI-driven insights, real-time analytics, and
-              professional-grade tactical tools that give you the edge over
-              millions of managers worldwide.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center lg:justify-start mb-8 sm:mb-12">
-              <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
-                <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
-                  <AppStoreBadge />
-                </div>
-              </div>
-              <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
-                <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
-                  <GooglePlayBadge />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* iPhone Mockups */}
-          <div className="relative flex justify-center">
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-8 sm:space-y-0 sm:space-x-4 md:space-x-8 max-w-full">
-              {/* iPhone Frame */}
-              <div
-                className="relative transform hover:scale-105 transition-all duration-500 w-[70vw] sm:w-48 md:w-56 lg:w-64 max-w-[280px]"
-                style={{ transform: `translateY(${scrollY * -0.1}px)` }}
-              >
-                <div className="h-[420px] sm:h-[480px] md:h-[520px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
-                  <div className="w-full h-full bg-lime-400 rounded-[2rem] relative overflow-hidden animate-flip-and-disappear">
-                    <img
-                      src="/tactic.png"
-                      alt="App Screenshot"
-                      style={{ objectFit: "cover" }}
-                      className="rounded-[2rem]"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection scrollY={scrollY} />
 
       {/* Features Section */}
       <section id="features" className="relative z-20 py-20 px-6 bg-white">
