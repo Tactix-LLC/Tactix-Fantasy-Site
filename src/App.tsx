@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  ChevronDown,
   Mail,
   Phone,
   MapPin,
-  Star,
   Trophy,
   Users,
   Target,
-  Sun,
-  Moon,
   Menu,
   X,
-  ArrowRight,
-  Play,
-  Shield,
-  FileText,
   Zap,
-  TrendingUp,
-  Award,
-  Clock,
-  BarChart3,
   Gamepad2,
 } from "lucide-react";
+import { API_BASE_URL } from "./config";
 
 const AppStoreBadge = () => (
   <svg width="135" height="40" viewBox="0 0 135 40" className="w-full h-auto">
@@ -104,11 +93,7 @@ const GooglePlayBadge = () => (
   </svg>
 );
 
-const FootballField = ({
-  mousePosition,
-}: {
-  mousePosition: { x: number; y: number };
-}) => {
+const FootballField = () => {
   const [arrows, setArrows] = useState<
     Array<{ id: number; x: number; y: number; angle: number; delay: number }>
   >([]);
@@ -388,6 +373,17 @@ function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "General Inquiry",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -407,10 +403,72 @@ function App() {
     };
   }, []);
 
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "General Inquiry",
+          message: "",
+        });
+
+        setFormStatus({
+          type: "success",
+          message:
+            data.message ||
+            "Message sent successfully! Check your email for confirmation.",
+        });
+
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus({ type: null, message: "" });
+        }, 5000);
+      } else {
+        setFormStatus({
+          type: "error",
+          message: data.message || "Failed to send message. Please try again.",
+        });
+      }
+    } catch {
+      setFormStatus({
+        type: "error",
+        message:
+          "Unable to send message. Please email us directly at support@jointactix.app",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="relative min-h-screen transition-colors duration-500 bg-lime-400 overflow-x-hidden">
       {/* Football Field Background */}
-      <FootballField mousePosition={mousePosition} />
+      <FootballField />
 
       {/* Dynamic Background Light Effect */}
       <div
@@ -904,7 +962,7 @@ function App() {
                   <h3 className="text-lg font-semibold font-['Space_Grotesk'] text-black">
                     Email Support
                   </h3>
-                  <p className="text-white">bekadessalegn@gmail.com</p>
+                  <p className="text-white">support@jointactix.app</p>
                   <p className="text-sm text-gray-600">
                     Response within 2 hours
                   </p>
@@ -919,7 +977,7 @@ function App() {
                   <h3 className="text-lg font-semibold font-['Space_Grotesk'] text-black">
                     Phone Support
                   </h3>
-                  <p className="text-white">+251 97 806 1901</p>
+                  <p className="text-white">+1 509 608 8947</p>
                   <p className="text-sm text-gray-600">Available 24/7</p>
                 </div>
               </div>
@@ -939,39 +997,57 @@ function App() {
 
               <div className="bg-white border-emerald-400/50 backdrop-blur-sm rounded-2xl p-6 border">
                 <h4 className="font-semibold font-['Space_Grotesk'] text-black mb-3">
-                  Quick Links
+                  Follow Us
                 </h4>
                 <div className="space-y-2">
                   <a
-                    href="https://t.me/TactixApp"
-                    className="block text-white hover:text-emerald-400 transition-colors"
-                  >
-                    ✈️ Telegram
-                  </a>
-                  <a
-                    href="https://t.me/TactixApp"
+                    href="https://www.facebook.com/share/16uh3yQDxK/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-gray-700 hover:text-emerald-400 transition-colors"
                   >
-                    🐥 Twitter
+                    📘 Facebook
                   </a>
                   <a
-                    href="https://t.me/TactixApp"
+                    href="https://www.instagram.com/tactix.app?igsh=b3F3NWV5OXVuenR1&utm_source=ig_contact_invite"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-gray-700 hover:text-emerald-400 transition-colors"
                   >
                     📸 Instagram
+                  </a>
+                  <a
+                    href="https://x.com/jointactixapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
+                  >
+                    🐦 Twitter
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@TactixApp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
+                  >
+                    📺 YouTube
                   </a>
                 </div>
               </div>
             </div>
 
             <div className="bg-white border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Your Name
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
                     placeholder="Enter your full name"
                     className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300"
                   />
@@ -982,6 +1058,10 @@ function App() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
                     placeholder="your.email@example.com"
                     className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300"
                   />
@@ -990,7 +1070,12 @@ function App() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Subject
                   </label>
-                  <select className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300">
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300"
+                  >
                     <option>General Inquiry</option>
                     <option>Technical Support</option>
                     <option>Account Issues</option>
@@ -1003,16 +1088,32 @@ function App() {
                     Message
                   </label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
                     rows={4}
                     placeholder="Tell us how we can help you dominate your fantasy league..."
                     className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300 resize-none"
                   ></textarea>
                 </div>
+                {formStatus.message && (
+                  <div
+                    className={`p-4 rounded-xl ${
+                      formStatus.type === "success"
+                        ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                        : "bg-red-50 text-red-700 border border-red-200"
+                    }`}
+                  >
+                    {formStatus.message}
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-emerald-400 to-lime-400 hover:from-emerald-500 hover:to-lime-500 py-3 rounded-xl text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-emerald-400 to-lime-400 hover:from-emerald-500 hover:to-lime-500 py-3 rounded-xl text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
@@ -1059,6 +1160,12 @@ function App() {
                   className="block bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent hover:text-emerald-400 transition-colors"
                 >
                   Download
+                </a>
+                <a
+                  href="/privacypolicy"
+                  className="block bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent hover:text-emerald-400 transition-colors"
+                >
+                  Privacy Policy
                 </a>
               </div>
             </div>
