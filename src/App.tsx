@@ -293,7 +293,7 @@ const FootballField = ({
 };
 
 const HeroSection = ({ scrollY }: { scrollY: number }) => {
-  const images = ["/tactic.png", "/screen2.png", "/screen3.png",];
+  const images = ["/tactic.png", "/screen2.png", "/screen3.png"];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -302,13 +302,13 @@ const HeroSection = ({ scrollY }: { scrollY: number }) => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); 
+    }, 4000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <section className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-br from-emerald-400 to-lime-400">
+    <section className="relative z-20 min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-gradient-to-r from-emerald-400 to-lime-400">
       <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
         <div className="text-center lg:text-left">
           <div className="inline-flex items-center space-x-2 rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 border bg-black border-black/30 backdrop-blur-sm">
@@ -478,24 +478,43 @@ function App() {
       </nav>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden fixed inset-x-0 top-20 z-40 bg-white/95 backdrop-blur-md border border-emerald-400/50 p-6">
-          <div className="flex flex-col space-y-4">
-            <a href="#features" className="text-gray-600 font-medium">
-              Features
-            </a>
-            <a href="#how-to-play" className="text-gray-600 font-medium">
-              How to Play
-            </a>
-            <a href="#download" className="text-gray-600 font-medium">
-              Download
-            </a>
-            <a href="#contact" className="text-gray-600 font-medium">
-              Contact
-            </a>
-          </div>
-        </div>
-      )}
+    {isMenuOpen && (
+  <div
+    className="md:hidden fixed inset-0 top-20 z-40 bg-transparent backdrop-blur-xl  border-emerald-400/50 p-6"
+  >
+    <div className="flex flex-col text-center space-y-6">
+      {[
+        { href: "#features",   label: "Features" },
+        { href: "#how-to-play",label: "How to Play" },
+        { href: "#download",   label: "Download" },
+        { href: "#contact",    label: "Contact" },
+      ].map((item) => (
+        <a
+          key={item.href}
+          href={item.href}
+          onClick={() => setIsMenuOpen(false)}   
+          className="
+            relative block py-2 text-lg font-bold text-black/80
+            overflow-hidden hover:text-black
+            transition-colors duration-200
+          "
+        >
+          <span className="relative z-10">{item.label}</span>
+
+          {/* Horizontal hover fill */}
+          <span
+            className="
+              absolute inset-x-0 bottom-0 bg-emerald-400/40
+              origin-left scale-x-0 transition-transform duration-300
+              group-hover:scale-x-100
+            "
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
 
       {/* Hero Section */}
       <HeroSection scrollY={scrollY} />
@@ -1064,24 +1083,11 @@ function App() {
             </div>
           </div>
 
-          <div className="border-t border-emerald-400/50 pt-8 flex flex-col md:flex-row items-center justify-between">
-            <div className="text-sm text-center md:text-left mb-4 md:mb-0 bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent">
-              <p>
-                &copy; {new Date().getFullYear()} Tactix™ Fantasy Football. All
-                rights reserved.
-              </p>
-              <p className="mt-1">
-                Revolutionizing fantasy football, one gameweek at a time.
-              </p>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 rounded-full animate-pulse bg-emerald-400"></div>
-                <span className="text-sm bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent">
-                  All systems operational
-                </span>
-              </div>
-            </div>
+          <div className="text-sm flex justify-center items-center  text-center md:text-left mb-4 md:mb-0 bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent">
+            <p className="px-3">
+              &copy; {new Date().getFullYear()} Tactix™ Fantasy Football. All
+              rights reserved.
+            </p>
           </div>
         </div>
       </footer>
