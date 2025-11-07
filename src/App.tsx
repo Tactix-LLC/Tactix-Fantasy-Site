@@ -313,10 +313,9 @@ const HeroSection = ({ scrollY }: { scrollY: number }) => {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-['Poppins'] text-black">
-            Experience the most advanced fantasy Premier League platform ever
-            created. Powered by AI-driven insights, real-time analytics, and
-            professional-grade tactical tools that give you the edge over
-            millions of managers worldwide.
+            Experience fantasy Premier League like never before. Build your dream team, 
+            compete with friends, and climb the leaderboards with unlimited transfers, 
+            real-time updates, and a beautiful, user-friendly interface designed for the modern manager.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center lg:justify-start mb-8 sm:mb-12">
@@ -594,9 +593,10 @@ function App() {
               </span>
             </h2>
             <p className="text-xl max-w-3xl mx-auto font-['Poppins'] text-black">
-              We've reimagined fantasy football from the ground up, combining
-              cutting-edge technology with deep football intelligence to create
-              the ultimate management experience.
+              We've reimagined fantasy football from the ground up, focusing on 
+              simplicity, beautiful design, and unlimited flexibility. Create your 
+              perfect team and compete with friends in the most user-friendly fantasy 
+              football experience available.
             </p>
           </div>
 
@@ -604,51 +604,51 @@ function App() {
             {[
               {
                 icon: Target,
-                title: "AI-Powered Predictions",
+                title: "Unlimited Transfers",
                 description:
-                  "Our advanced machine learning algorithms analyze thousands of data points to predict player performance with unprecedented accuracy.",
+                  "Unlike other fantasy football platforms, Tactix offers unlimited transfers between game weeks. Build, rebuild, and optimize your team as much as you want—strategize freely without restrictions.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "94% accuracy rate",
+                stats: "No transfer limits",
               },
               {
                 icon: Users,
-                title: "Real-Time Analytics",
+                title: "Real-Time Updates",
                 description:
-                  "Get instant insights on player form, fixture difficulty, and market trends to make informed transfer decisions.",
+                  "Track your points and rankings as real matches unfold. Watch your team's performance update in real-time with live point calculations and instant leaderboard updates.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "Live data updates",
+                stats: "Live match updates",
               },
               {
                 icon: Users,
                 title: "Social Leagues",
                 description:
-                  "Create private leagues with friends, join public competitions, and climb the global leaderboards with our enhanced social features.",
+                  "Create private leagues with friends, join public competitions, and compete on global leaderboards. Your single team competes across all leagues you're part of.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "2300+ active users",
+                stats: "Compete globally",
               },
               {
                 icon: Zap,
-                title: "Lightning Fast",
+                title: "Beautiful UI/UX",
                 description:
-                  "Built with cutting-edge technology for instant loading, smooth animations, and real-time updates that keep you ahead of the game.",
+                  "Experience a thoughtfully designed interface that's both beautiful and intuitive. Every screen is crafted to enhance your gaming experience with smooth animations and seamless navigation.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "<0.5s load time",
+                stats: "User-friendly design",
               },
               {
                 icon: Users,
-                title: "Advanced Security",
+                title: "Secure & Reliable",
                 description:
-                  "Your data is protected with bank-level encryption and security measures. Play with confidence knowing your information is safe.",
+                  "Your data is protected with industry-standard security measures. Play with confidence knowing your information is safe and your progress is always saved.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "256-bit encryption",
+                stats: "Secure platform",
               },
               {
                 icon: Trophy,
-                title: "Expert Insights",
+                title: "Strategic Gameplay",
                 description:
-                  "Access exclusive content from Premier League analysts, former players, and fantasy football experts to gain the competitive edge.",
+                  "Make smart transfers, set your lineup, and choose your captain and vice-captain wisely. Every decision counts as you compete week by week to climb the rankings.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "50+ expert contributors",
+                stats: "Strategic depth",
               },
             ].map((feature, index) => (
               <div
@@ -693,9 +693,9 @@ function App() {
               How to play ?
             </h2>
             <p className="text-xl max-w-3xl mx-auto font-['Poppins'] text-black">
-              Follow our proven strategy guide to transform from a casual player
-              into a fantasy football legend. These are the exact steps used by
-              our top-ranked managers.
+              Get started with Tactix in three simple steps. Build your team, 
+              manage your squad, and compete with friends. It's that easy to 
+              begin your fantasy football journey.
             </p>
           </div>
 
@@ -705,36 +705,36 @@ function App() {
                 icon: Users,
                 title: "Build Your Dream Squad",
                 description:
-                  "Start with £100m budget to select 15 players. Use our AI recommendations to identify undervalued gems and avoid popular traps. Choose your formation wisely - it's the foundation of success.",
+                  "Start with 100 Tactix Coins to select your squad of 15 players: 2 Goalkeepers, 5 Defenders, 5 Midfielders, and 3 Forwards. A maximum of 3 players can be selected from the same team. Choose wisely to maximize your points potential.",
                 color: "from-emerald-400 to-lime-400",
                 tips: [
-                  "Focus on consistent performers",
-                  "Avoid injury-prone players",
-                  "Balance premium picks with budget options",
+                  "Balance your budget across positions",
+                  "Select a strong captain and vice-captain",
+                  "Consider fixture difficulty when choosing players",
                 ],
               },
               {
                 icon: Target,
-                title: "Master the Art of Timing",
+                title: "Master Every Matchday",
                 description:
-                  "Use your transfers strategically, activate chips at optimal moments, and captain the right player each week. Our advanced analytics show you exactly when to make your moves.",
+                  "Make smart transfers between game weeks with unlimited flexibility. Set your lineup, choose your captain and vice-captain, and react to real-time match updates. Every decision counts as you compete week by week.",
                 color: "from-emerald-400 to-lime-400",
                 tips: [
-                  "Save transfers for double gameweeks",
-                  "Use chips during favorable fixtures",
-                  "Captain differential picks for big gains",
+                  "Use unlimited transfers to optimize your team",
+                  "Monitor player form and fixtures",
+                  "Set your lineup before each game week deadline",
                 ],
               },
               {
                 icon: Trophy,
-                title: "Dominate Your Leagues",
+                title: "Compete & Climb the Ranks",
                 description:
-                  "Track your progress across multiple leagues, analyze your rivals' strategies, and use our exclusive insights to stay ahead. Consistency beats luck every time.",
+                  "Join leagues with friends, compete in global leaderboards, and prove your tactical skills. Track your progress across all your leagues and see how you rank against players worldwide.",
                 color: "from-emerald-400 to-lime-400",
                 tips: [
-                  "Join multiple league types",
-                  "Study top managers' strategies",
-                  "Stay patient with long-term planning",
+                  "Create private leagues with friends",
+                  "Compete on global leaderboards",
+                  "Stay consistent with your strategy",
                 ],
               },
             ].map((step, index) => (
@@ -901,9 +901,9 @@ function App() {
             </span>
           </h2>
           <p className="text-xl mb-12 max-w-2xl mx-auto font-['Poppins'] text-black">
-            Join millions of managers who've already discovered the future of
-            fantasy football. Available on all your favorite platforms with
-            seamless sync across devices.
+            Join the Tactix community and experience fantasy football like never before. 
+            Available on iOS and Android with seamless sync across all your devices. 
+            Free to play, unlimited transfers, and designed for the modern manager.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
@@ -921,16 +921,16 @@ function App() {
 
           <div className="bg-white/70 border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
             <h3 className="text-xl font-bold font-['Space_Grotesk'] text-black mb-4">
-              What's New in Version 3.0
+              Key Features
             </h3>
             <div className="grid md:grid-cols-2 gap-4 text-left">
               {[
-                "🚀 AI-powered player recommendations",
-                "📊 Advanced analytics dashboard",
-                "⚡ Real-time price change alerts",
-                "🏆 Enhanced league management",
-                "📱 Improved mobile experience",
-                "🔔 Smart notification system",
+                "⚽ Build your dream team of 15 players",
+                "💰 100 Tactix Coins starting budget",
+                "🔄 Unlimited transfers between game weeks",
+                "👑 Captain and vice-captain selection",
+                "📊 Real-time points and rankings",
+                "🏆 Compete in leagues and global leaderboards",
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -964,10 +964,10 @@ function App() {
                 Help?
               </span>
             </h2>
-            <p className="text-xl font-['Poppins'] text-black">
-              Our expert support team is here 24/7 to help you dominate your
-              fantasy leagues. Whether you need tactical advice or technical
-              support, we've got you covered.
+              <p className="text-xl font-['Poppins'] text-black">
+              Our support team is here to help you get the most out of Tactix. 
+              Whether you need help with your account, have questions about gameplay, 
+              or want to share feedback, we're here to assist you.
             </p>
           </div>
 
@@ -983,7 +983,7 @@ function App() {
                   </h3>
                   <p className="text-white">support@jointactix.app</p>
                   <p className="text-sm text-gray-600">
-                    Response within 2 hours
+                    We'll get back to you soon
                   </p>
                 </div>
               </div>
@@ -997,7 +997,7 @@ function App() {
                     Phone Support
                   </h3>
                   <p className="text-white">+1 509 608 8947</p>
-                  <p className="text-sm text-gray-600">Available 24/7</p>
+                  <p className="text-sm text-gray-600">Mon-Fri, 9am-5pm PST</p>
                 </div>
               </div>
 
@@ -1151,9 +1151,10 @@ function App() {
                 </span>
               </div>
               <p className="mb-2 max-w-md font-['Poppins'] bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent ">
-                The most advanced fantasy Premier League platform, trusted by
-                millions of managers worldwide. Elevate your game with
-                AI-powered insights and professional-grade tools.
+                The most user-friendly fantasy Premier League platform. Build your 
+                dream team, compete with friends, and climb the leaderboards with 
+                unlimited transfers and real-time updates. Free to play, beautifully 
+                designed, and built for the modern manager.
               </p>
             </div>
 
