@@ -1187,6 +1187,12 @@ function App() {
                 >
                   Privacy Policy
                 </a>
+                <a
+                  href="/termsofuse"
+                  className="block bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent hover:text-emerald-400 transition-colors"
+                >
+                  Terms of Use
+                </a>
               </div>
             </div>
           </div>
