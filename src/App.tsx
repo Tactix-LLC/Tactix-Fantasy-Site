@@ -13,6 +13,133 @@ import {
 } from "lucide-react";
 import { API_BASE_URL } from "./config";
 
+const APP_STORE_URL = "https://apps.apple.com/us/app/tactix-fantasy/id6751880351";
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=app.jointactix.fantasy";
+
+type BrandPath = {
+  d: string;
+  fillRule?: "inherit" | "nonzero" | "evenodd";
+  clipRule?: "inherit" | "nonzero" | "evenodd";
+  fill?: string;
+};
+
+const BrandIcon = ({
+  viewBox = "0 0 24 24",
+  paths,
+}: {
+  viewBox?: string;
+  paths: BrandPath[];
+}) => (
+  <svg
+    viewBox={viewBox}
+    className="w-5 h-5 text-white"
+    aria-hidden="true"
+    role="img"
+  >
+    {paths.map((path, idx) => (
+      <path
+        key={idx}
+        d={path.d}
+        fill={path.fill ?? "currentColor"}
+        fillRule={path.fillRule}
+        clipRule={path.clipRule}
+      />
+    ))}
+  </svg>
+);
+
+const facebookIcon = [
+  {
+    d: "M22.675 0h-21.35C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.66-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.762v2.313h3.587l-.467 3.622h-3.12V24h6.115C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z",
+  },
+];
+
+const instagramIcon = [
+  {
+    d: "M7.5 1C4.462 1 2 3.462 2 6.5v11C2 20.538 4.462 23 7.5 23h9c3.038 0 5.5-2.462 5.5-5.5v-11C22 3.462 19.538 1 16.5 1h-9zM7.5 0h9C21.985 0 24 2.015 24 6.5v11C24 21.985 21.985 24 16.5 24h-9C2.015 24 0 21.985 0 17.5v-11C0 2.015 2.015 0 7.5 0z",
+  },
+  {
+    d: "M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-2a7 7 0 1 1 0 14 7 7 0 0 1 0-14zm6.75-1.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z",
+  },
+];
+
+const youtubeIcon = [
+  {
+    d: "M23.498 6.186a2.974 2.974 0 0 0-2.09-2.105C19.691 3.5 12 3.5 12 3.5s-7.691 0-9.408.581a2.974 2.974 0 0 0-2.09 2.105C0 7.919 0 12 0 12s0 4.081.502 5.814a2.974 2.974 0 0 0 2.09 2.105C4.309 20.5 12 20.5 12 20.5s7.691 0 9.408-.581a2.974 2.974 0 0 0 2.09-2.105C24 16.081 24 12 24 12s0-4.081-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z",
+  },
+];
+
+const xIcon = [
+  {
+    d: "M19.772 0h3.553l-7.756 8.858 9.102 13.142h-7.132l-5.598-7.315-6.406 7.315H0l8.242-9.406L0 .626h7.277l5.01 6.567L19.772 0z",
+  },
+];
+
+const telegramIcon = [
+  {
+    d: "M23.954 3.914a1.2 1.2 0 0 0-1.743-.862L1.588 12.09a1.2 1.2 0 0 0 .095 2.2l5.55 1.749 2.128 6.365a1.2 1.2 0 0 0 2.128.254l3.033-4.733 5.486 4.152a1.2 1.2 0 0 0 1.892-.67l3.096-16.58a1.2 1.2 0 0 0-.642-1.913z",
+  },
+];
+
+const tiktokIcon = [
+  {
+    d: "M12.868 0h3.532a6.126 6.126 0 0 0 6.126 5.447v3.526a9.647 9.647 0 0 1-5.447-1.673V17.27a6.681 6.681 0 1 1-6.681-6.682h.353v3.61a3.07 3.07 0 1 0 2.215 2.943V0z",
+  },
+];
+
+const socialLinks = [
+  {
+    name: "Facebook",
+    handle: "@TactixApp",
+    href: "https://www.facebook.com/share/16uh3yQDxK/?mibextid=wwXIfr",
+    icon: <BrandIcon paths={facebookIcon} />,
+    bg: "from-blue-500 to-blue-600",
+  },
+  {
+    name: "Instagram",
+    handle: "@tactix.app",
+    href: "https://www.instagram.com/tactix.app?igsh=b3F3NWV5OXVuenR1&utm_source=ig_contact_invite",
+    icon: <BrandIcon paths={instagramIcon} />,
+    bg: "from-pink-500 to-purple-500",
+  },
+  {
+    name: "X (Twitter)",
+    handle: "@jointactixapp",
+    href: "https://x.com/jointactixapp",
+    icon: <BrandIcon paths={xIcon} />,
+    bg: "from-slate-900 to-gray-800",
+  },
+  {
+    name: "YouTube",
+    handle: "@TactixApp",
+    href: "https://www.youtube.com/@TactixApp",
+    icon: <BrandIcon paths={youtubeIcon} />,
+    bg: "from-red-500 to-red-600",
+  },
+  {
+    name: "Telegram Group",
+    handle: "@JoinTactix",
+    href: "https://t.me/JoinTactix",
+    icon: <BrandIcon paths={telegramIcon} />,
+    bg: "from-sky-500 to-sky-600",
+  },
+  {
+    name: "Telegram Channel",
+    handle: "@TactixApp",
+    href: "https://t.me/TactixApp",
+    icon: <BrandIcon paths={telegramIcon} />,
+    bg: "from-sky-500 to-sky-600",
+  },
+  {
+    name: "TikTok",
+    handle: "@tactix.app",
+    href: "https://www.tiktok.com/@tactix.app",
+    icon: <BrandIcon paths={tiktokIcon} />,
+    bg: "from-gray-900 via-pink-500 to-cyan-400",
+  },
+];
+
 const AppStoreBadge = () => (
   <svg width="135" height="40" viewBox="0 0 135 40" className="w-full h-auto">
     <defs>
@@ -319,16 +446,26 @@ const HeroSection = ({ scrollY }: { scrollY: number }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center lg:justify-start mb-8 sm:mb-12">
-            <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group cursor-pointer transform hover:scale-105 transition-all duration-300"
+            >
               <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
                 <AppStoreBadge />
               </div>
-            </div>
-            <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
+            </a>
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group cursor-pointer transform hover:scale-105 transition-all duration-300"
+            >
               <div className="w-36 sm:w-44 h-12 sm:h-14 hover:shadow-2xl transition-shadow duration-300">
                 <GooglePlayBadge />
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -779,108 +916,69 @@ function App() {
             ))}
           </div>
 
-          <div className="bg-white/60 border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
-            <div className="text-center mb-12">
-              <span className="px-4 py-1 rounded-full border text-sm border-emerald-400 text-emerald-400">
-                User Reviews
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
-                What{" "}
-                <span className="bg-black bg-clip-text text-transparent">
-                  Players
-                </span>{" "}
-                Say
-              </h2>
-              <p className="mt-2 max-w-xl mx-auto text-black">
-                Hear from our top players
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Nebeyu Y.",
-                  quote:
-                    "Best fantasy soccer app I've used. The interface is clean and real-time updates are amazing!",
-                },
-                {
-                  name: "Abenezer W.",
-                  quote:
-                    "Finally, a fantasy app that gets it right. Love the team building feature and weekly prizes!",
-                },
-                {
-                  name: "Kaleab T.",
-                  quote:
-                    "Great fantasy app. The player stats updates and transfers are super easy to manage.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="p-6 rounded-xl shadow-md bg-white">
-                  <div className="flex items-center mb-4">
-                    <div className="flex space-x-1 text-emerald-400">
-                      {Array(5)
-                        .fill(0)
-                        .map((_, i) => (
-                          <svg
-                            key={i}
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            className="w-5 h-5"
-                          >
-                            <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.801 1.48 8.293L12 18.896l-7.416 4.504 1.48-8.293L0 9.306l8.332-1.151z" />
-                          </svg>
-                        ))}
-                    </div>
-                  </div>
-                  <p className="mb-4 italic text-gray-600">"{item.quote}"</p>
-                  <p className="font-semibold text-black">{item.name}</p>
-                  <p className="text-sm text-gray-700">Player</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-20">
-            <h3 className="text-center text-2xl lg:text-5xl font-bold mb-8 font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
-              Our{" "}
+        <div className="bg-white/60 border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
+          <div className="text-center mb-12">
+            <span className="px-4 py-1 rounded-full border text-sm border-emerald-400 text-emerald-400">
+              Video Tutorials
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 font-['Space_Grotesk'] bg-black bg-clip-text text-transparent">
+              Watch &{" "}
               <span className="bg-black bg-clip-text text-transparent">
-                Partners
+                Learn
               </span>
-            </h3>
-
-            <div className="relative w-full overflow-hidden">
-              <div className="flex animate-marquee whitespace-nowrap">
-                {["/v.jpg", "/v (3).jpg", "/v (2).jpg", "/v (1).jpg"].map(
-                  (logo, i) => (
-                    <div
-                      key={`logo-${i}`}
-                      className="flex-shrink-0 w-24 h-24 rounded-full border flex items-center justify-center shadow-md mx-6 bg-white border-emerald-400/50"
-                    >
-                      <img
-                        src={logo}
-                        alt={`Partner ${i + 1}`}
-                        className="w-14 h-14 object-contain"
-                      />
-                    </div>
-                  )
-                )}
-                {["/v.jpg", "/v (3).jpg", "/v (2).jpg", "/v (1).jpg"].map(
-                  (logo, i) => (
-                    <div
-                      key={`logo-duplicate-${i}`}
-                      className="flex-shrink-0 w-24 h-24 rounded-full border flex items-center justify-center shadow-md mx-6 bg-white border-emerald-400/50"
-                    >
-                      <img
-                        src={logo}
-                        alt={`Partner ${i + 1}`}
-                        className="w-14 h-14 object-contain"
-                      />
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
+            </h2>
+            <p className="mt-2 max-w-xl mx-auto text-black">
+              Quick guides to help you master Tactix faster.
+            </p>
           </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "How to Get Started",
+                description:
+                  "From creating your team to joining leagues, this guide shows you how to hit the ground running.",
+                videoId: "kEByZPW_Vs0",
+                url: "https://youtu.be/kEByZPW_Vs0",
+              },
+              {
+                title: "How to Play Tactix",
+                description:
+                  "Walk through every gameplay mechanic and see how points, transfers, and captain choices work.",
+                videoId: "K-1UQtNS1c4",
+                url: "https://youtu.be/K-1UQtNS1c4",
+              },
+            ].map((video) => (
+              <div
+                key={video.videoId}
+                className="p-6 rounded-2xl shadow-md bg-white border border-emerald-100 flex flex-col"
+              >
+                <div className="aspect-video rounded-xl overflow-hidden mb-4 bg-black/5">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.videoId}?rel=0`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <h4 className="text-xl font-semibold font-['Space_Grotesk'] text-black mb-2">
+                  {video.title}
+                </h4>
+                <p className="text-gray-700 flex-1">{video.description}</p>
+                <a
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-lime-400 text-white font-semibold hover:from-emerald-500 hover:to-lime-500 transition-colors"
+                >
+                  Watch on YouTube
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
         </div>
       </section>
 
@@ -907,16 +1005,26 @@ function App() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group cursor-pointer transform hover:scale-105 transition-all duration-300"
+            >
               <div className="w-44 h-14 hover:shadow-2xl transition-shadow duration-300">
                 <AppStoreBadge />
               </div>
-            </div>
-            <div className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
+            </a>
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group cursor-pointer transform hover:scale-105 transition-all duration-300"
+            >
               <div className="w-44 h-14 hover:shadow-2xl transition-shadow duration-300">
                 <GooglePlayBadge />
               </div>
-            </div>
+            </a>
           </div>
 
           <div className="bg-white/70 border-emerald-400/50 backdrop-blur-sm rounded-2xl p-8 border">
@@ -1018,39 +1126,28 @@ function App() {
                 <h4 className="font-semibold font-['Space_Grotesk'] text-black mb-3">
                   Follow Us
                 </h4>
-                <div className="space-y-2">
-                  <a
-                    href="https://www.facebook.com/share/16uh3yQDxK/?mibextid=wwXIfr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
-                  >
-                    📘 Facebook
-                  </a>
-                  <a
-                    href="https://www.instagram.com/tactix.app?igsh=b3F3NWV5OXVuenR1&utm_source=ig_contact_invite"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
-                  >
-                    📸 Instagram
-                  </a>
-                  <a
-                    href="https://x.com/jointactixapp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
-                  >
-                    🐦 Twitter
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@TactixApp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-700 hover:text-emerald-400 transition-colors"
-                  >
-                    📺 YouTube
-                  </a>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={`${link.name}-${link.handle}`}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 rounded-2xl border border-emerald-100 hover:border-emerald-300 transition-colors text-sm"
+                    >
+                      <div
+                        className={`w-9 h-9 rounded-xl bg-gradient-to-br ${link.bg} flex items-center justify-center`}
+                      >
+                        {link.icon}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-black text-sm">
+                          {link.name}
+                        </p>
+                        <p className="text-xs text-gray-600">{link.handle}</p>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -1111,9 +1208,9 @@ function App() {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows={4}
+                    rows={8}
                     placeholder="Tell us how we can help you dominate your fantasy league..."
-                    className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-white/70 border-emerald-400/50 text-gray-900 placeholder-gray-500 focus:border-emerald-400 border rounded-xl focus:outline-none transition-colors duration-300 resize-none min-h-[220px]"
                   ></textarea>
                 </div>
                 {formStatus.message && (
