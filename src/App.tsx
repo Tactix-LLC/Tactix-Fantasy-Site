@@ -117,13 +117,13 @@ const socialLinks = [
     icon: <BrandIcon paths={youtubeIcon} />,
     bg: "from-red-500 to-red-600",
   },
-  {
-    name: "Telegram Group",
-    handle: "@JoinTactix",
-    href: "https://t.me/JoinTactix",
-    icon: <BrandIcon paths={telegramIcon} />,
-    bg: "from-sky-500 to-sky-600",
-  },
+  // {
+  //   name: "Telegram Group",
+  //   handle: "@JoinTactix",
+  //   href: "https://t.me/JoinTactix",
+  //   icon: <BrandIcon paths={telegramIcon} />,
+  //   bg: "from-sky-500 to-sky-600",
+  // },
   {
     name: "Telegram Channel",
     handle: "@TactixApp",
