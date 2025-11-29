@@ -442,7 +442,7 @@ const HeroSection = ({ scrollY }: { scrollY: number }) => {
           <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-['Poppins'] text-black">
             Experience fantasy Premier League like never before. Build your dream team, 
             compete with friends, and climb the leaderboards with unlimited transfers, 
-            real-time updates, and a beautiful, user-friendly interface designed for the modern manager.
+            real time updates, and a beautiful, user friendly interface designed for the modern manager.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center lg:justify-start mb-8 sm:mb-12">
@@ -720,7 +720,7 @@ function App() {
             <div className="inline-flex items-center space-x-2 rounded-full px-4 py-2 mb-6 border bg-gradient-to-r from-emerald-400/20 to-lime-400/20 border-emerald-400/30 backdrop-blur-sm">
               <Gamepad2 className="w-4 h-4 text-black" />
               <span className="text-sm font-medium text-black">
-                Game-Changing Features
+                Game Changing Features
               </span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold font-['Space_Grotesk'] bg-black bg-clip-text text-transparent mb-6">
@@ -732,7 +732,7 @@ function App() {
             <p className="text-xl max-w-3xl mx-auto font-['Poppins'] text-black">
               We've reimagined fantasy football from the ground up, focusing on 
               simplicity, beautiful design, and unlimited flexibility. Create your 
-              perfect team and compete with friends in the most user-friendly fantasy 
+              perfect team and compete with friends in the most user friendly fantasy 
               football experience available.
             </p>
           </div>
@@ -743,15 +743,15 @@ function App() {
                 icon: Target,
                 title: "Unlimited Transfers",
                 description:
-                  "Unlike other fantasy football platforms, Tactix offers unlimited transfers between game weeks. Build, rebuild, and optimize your team as much as you want—strategize freely without restrictions.",
+                  "Unlike other fantasy football platforms, Tactix offers unlimited transfers between game weeks. Build, rebuild, and optimize your team as much as you want strategize freely without restrictions.",
                 color: "from-emerald-400 to-lime-400",
                 stats: "No transfer limits",
               },
               {
                 icon: Users,
-                title: "Real-Time Updates",
+                title: "Real Time Updates",
                 description:
-                  "Track your points and rankings as real matches unfold. Watch your team's performance update in real-time with live point calculations and instant leaderboard updates.",
+                  "Track your points and rankings as real matches unfold. Watch your team's performance update in real time with live point calculations and instant leaderboard updates.",
                 color: "from-emerald-400 to-lime-400",
                 stats: "Live match updates",
               },
@@ -769,13 +769,13 @@ function App() {
                 description:
                   "Experience a thoughtfully designed interface that's both beautiful and intuitive. Every screen is crafted to enhance your gaming experience with smooth animations and seamless navigation.",
                 color: "from-emerald-400 to-lime-400",
-                stats: "User-friendly design",
+                stats: "User friendly design",
               },
               {
                 icon: Users,
                 title: "Secure & Reliable",
                 description:
-                  "Your data is protected with industry-standard security measures. Play with confidence knowing your information is safe and your progress is always saved.",
+                  "Your data is protected with industry standard security measures. Play with confidence knowing your information is safe and your progress is always saved.",
                 color: "from-emerald-400 to-lime-400",
                 stats: "Secure platform",
               },
@@ -783,7 +783,7 @@ function App() {
                 icon: Trophy,
                 title: "Strategic Gameplay",
                 description:
-                  "Make smart transfers, set your lineup, and choose your captain and vice-captain wisely. Every decision counts as you compete week by week to climb the rankings.",
+                  "Make smart transfers, set your lineup, and choose your captain and vice captain wisely. Every decision counts as you compete week by week to climb the rankings.",
                 color: "from-emerald-400 to-lime-400",
                 stats: "Strategic depth",
               },
@@ -846,7 +846,7 @@ function App() {
                 color: "from-emerald-400 to-lime-400",
                 tips: [
                   "Balance your budget across positions",
-                  "Select a strong captain and vice-captain",
+                  "Select a strong captain and vice captain",
                   "Consider fixture difficulty when choosing players",
                 ],
               },
@@ -854,7 +854,7 @@ function App() {
                 icon: Target,
                 title: "Master Every Matchday",
                 description:
-                  "Make smart transfers between game weeks with unlimited flexibility. Set your lineup, choose your captain and vice-captain, and react to real-time match updates. Every decision counts as you compete week by week.",
+                  "Make smart transfers between game weeks with unlimited flexibility. Set your lineup, choose your captain and vice captain, and react to real time match updates. Every decision counts as you compete week by week.",
                 color: "from-emerald-400 to-lime-400",
                 tips: [
                   "Use unlimited transfers to optimize your team",
@@ -1037,7 +1037,7 @@ function App() {
                 "💰 100 Tactix Coins starting budget",
                 "🔄 Unlimited transfers between game weeks",
                 "👑 Captain and vice-captain selection",
-                "📊 Real-time points and rankings",
+                "📊 Real time points and rankings",
                 "🏆 Compete in leagues and global leaderboards",
               ].map((feature, index) => (
                 <div
@@ -1248,9 +1248,9 @@ function App() {
                 </span>
               </div>
               <p className="mb-2 max-w-md font-['Poppins'] bg-gradient-to-br from-emerald-400 to-lime-400 bg-clip-text text-transparent ">
-                The most user-friendly fantasy Premier League platform. Build your 
+                The most user friendly fantasy Premier League platform. Build your 
                 dream team, compete with friends, and climb the leaderboards with 
-                unlimited transfers and real-time updates. Free to play, beautifully 
+                unlimited transfers and real time updates. Free to play, beautifully 
                 designed, and built for the modern manager.
               </p>
             </div>
